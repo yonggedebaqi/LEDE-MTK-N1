@@ -68,11 +68,11 @@ jobs:
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
 
-    - name: Install node-request
-      run: cd openwrt/package/lean/ && git clone https://github.com/jerrykuku/node-request.git
+    #- name: Install node-request
+      #run: cd openwrt/package/lean/ && git clone https://github.com/jerrykuku/node-request.git
 
-    #- name: Install luci-app-jd-dailybonus
-      #run: cd openwrt/package/lean/ && git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git
+    - name: Install luci-app-jd-dailybonus
+      run: cd openwrt/package/lean/ && git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git
 
     - name: Install SSRPRO
       run: cd openwrt && git clone https://github.com/fw876/helloworld.git
