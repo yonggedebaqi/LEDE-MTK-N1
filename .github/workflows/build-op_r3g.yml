@@ -1,19 +1,10 @@
-#
-# Copyright (c) 2019-2020 P3TERX <https://p3terx.com>
-#
-# This is free software, licensed under the MIT License.
-# See /LICENSE for more information.
-#
-# https://github.com/P3TERX/Actions-OpenWrt
-# Description: Build OpenWrt using GitHub Actions
-#
 
 name: Build OpenWrt-r3g
 
 on:
   repository_dispatch:
-  release:
-    types: published
+#  release:
+#    types: published
   push:
     branches:
       - main
@@ -21,8 +12,8 @@ on:
       - '.config'
 #  schedule:
 #    - cron: 0 8 * * 5
-#  watch:
-#    types: started
+  watch:
+    types: started
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
@@ -101,6 +92,7 @@ jobs:
         rm openwrt/feeds/packages/multimedia/youtube-dl/Makefile
         rm  openwrt/package/lean/mt/drivers/mt_wifi/files/mt7615.1.2G.dat
         rm  openwrt/package/lean/mt/drivers/mt_wifi/files/mt7615.1.5G.dat
+
     - name: copy move file
       run: |
         cp ./mt7621_xiaomi_mir3g.dtsmt7621_xiaomi_mir3g.dts openwrt/target/linux/ramips/dts
