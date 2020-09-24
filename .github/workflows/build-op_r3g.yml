@@ -99,16 +99,18 @@ jobs:
         rm -rf openwrt/package/network/utils/curl
         rm -rf openwrt/feeds/packages/multimedia/ffmpeg
         rm openwrt/feeds/packages/multimedia/youtube-dl/Makefile
-
+        rm  openwrt/package/lean/mt/drivers/mt_wifi/files/mt7615.1.2G.dat
+        rm  openwrt/package/lean/mt/drivers/mt_wifi/files/mt7615.1.5G.dat
     - name: copy move file
       run: |
-        cp ./mt7621_xiaomi_mir3g.dts openwrt/target/linux/ramips/dts
+        cp ./mt7621_xiaomi_mir3g.dtsmt7621_xiaomi_mir3g.dts openwrt/target/linux/ramips/dts
         #cp ./mac80211.sh openwrt/package/kernel/mac80211/files/lib/wifi
         cp ./profile openwrt/package/base-files/files/etc
         cp ./shadow openwrt/package/base-files/files/etc
         cp -R ./curl openwrt/package/network/utils/
         cp -R ./openwrt/helloworld/luci-app-ssr-plus openwrt/package/lean/
         cp -R ./openwrt/helloworld/tcping openwrt/package/lean/
+        cp -R ./oscam openwrt/package/lean/
         cp -R ./openwrt/helloworld/naiveproxy openwrt/package/lean/
         rm -rf ./openwrt/helloworld
         cp -R ./ffmpeg openwrt/feeds/packages/multimedia/
@@ -127,6 +129,8 @@ jobs:
         sed -i 's#bootstrap#material#g' openwrt/feeds/luci/collections/luci-ssl-nginx/Makefile
         sed -i 's/Bootstrap/Material/g' openwrt/feeds/luci/collections/luci/Makefile
         sed -i 's/12345678/sammi100200/g' openwrt/package/lean/mt/luci-app-mtwifi/luasrc/controller/mtkwifi.lua
+        cp ./mt7615.2.dat openwrt/package/lean/mt/drivers/mt_wifi/files/mt7615.1.5G.dat
+        cp ./mt7615.1.dat openwrt/package/lean/mt/drivers/mt_wifi/files/mt7615.1.2G.dat
 
     - name: Load custom configuration
       run: |
