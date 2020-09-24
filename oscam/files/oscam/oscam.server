@@ -1,0 +1,22 @@
+[reader]
+label                         = card_1
+protocol                      = mouse
+device                        = /dev/ttyUSB0
+detect                        = cd
+group                         = 1
+
+[reader]
+label                         = remote
+enable                        = 0
+protocol                      = cccam
+device                        = ip,12000
+user                          = user
+password                      = pass
+inactivitytimeout             = 30
+reconnecttimeout              = 2
+caid                          = xxxx
+group                         = 1
+cccversion                    = 2.1.4
+cccmaxhops                    = 0
+ccckeepalive                  = 1
+cccreshare                    = 1

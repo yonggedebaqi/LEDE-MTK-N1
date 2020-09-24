@@ -1,0 +1,194 @@
+
+name: Build OpenWrt-N1
+
+on:
+  repository_dispatch:
+#  release:
+#    types: published
+  push:
+    branches:
+      - main
+    paths:
+      - '.config'
+#  schedule:
+#    - cron: 0 8 * * 5
+  watch:
+    types: started
+
+env:
+  REPO_URL: https://github.com/coolsnowwolf/lede
+  REPO_BRANCH: master
+  FEEDS_CONF: feeds.conf.default
+  CONFIG_FILE: n1_config
+  DIY_P1_SH: diy-part1.sh
+  DIY_P2_SH: diy-part2.sh
+  SSH_ACTIONS: false
+  UPLOAD_BIN_DIR: false
+  UPLOAD_FIRMWARE: true
+  UPLOAD_COWTRANSFER: false
+  UPLOAD_WETRANSFER: false
+  TZ: Asia/Shanghai
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    if: github.event.repository.owner.id == github.event.sender.id
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@main
+
+    - name: Initialization environment
+      env:
+        DEBIAN_FRONTEND: noninteractive
+      run: |
+        sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
+        sudo -E apt-get -qq update
+        sudo -E apt-get -qq install $(curl -fsSL git.io/depends-ubuntu-1804)
+        sudo -E apt-get -qq autoremove --purge
+        sudo -E apt-get -qq clean
+        sudo timedatectl set-timezone "$TZ"
+        sudo mkdir -p /workdir
+        sudo chown $USER:$GROUPS /workdir
+    - name: Clone source code
+      working-directory: /workdir
+      run: |
+        df -hT $PWD
+        git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
+        ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+    - name: Load custom feeds
+      run: |
+        [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
+        chmod +x $DIY_P1_SH
+        cd openwrt
+        $GITHUB_WORKSPACE/$DIY_P1_SH
+    - name: Update feeds
+      run: cd openwrt && ./scripts/feeds update -a
+
+    - name: Install feeds
+      run: cd openwrt && ./scripts/feeds install -a
+
+    #- name: Install node-request
+      #run: cd openwrt/package/lean/ && git clone https://github.com/jerrykuku/node-request.git
+
+    - name: Install luci-app-jd-dailybonus
+      run: cd openwrt/package/lean/ && git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git
+
+    - name: Install SSRPRO
+      run: cd openwrt && git clone https://github.com/fw876/helloworld.git
+
+    #- name: Install luci-app-dockerman
+      #run: cd openwrt && git clone https://github.com/lisaac/luci-app-dockerman.git
+
+    - name: delete file
+      run: |
+        rm -rf openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh
+        rm -rf openwrt/package/base-files/files/etc/profile
+        rm -rf openwrt/package/base-files/files/etc/shadow
+        rm -rf openwrt/package/libs/libiconv-full/patches/100-strip_charsets.patch
+        rm -rf openwrt/package/network/utils/curl
+        rm -rf openwrt/feeds/packages/multimedia/youtube-dl/Makefile
+
+    - name: copy move file
+      run: |
+        cp ./mac80211.sh openwrt/package/kernel/mac80211/files/lib/wifi
+        cp ./profile openwrt/package/base-files/files/etc
+        cp ./shadow openwrt/package/base-files/files/etc
+        cp -R ./oscam openwrt/package/lean/
+        cp -R ./libdvbcsa openwrt/package/lean/
+        #cp -R ./openwrt/luci-app-dockerman/applications/luci-app-dockerman openwrt/package/lean/
+        cp -R ./curl openwrt/package/network/utils/
+        #cp -R ./openwrt/luci-app-dockerman/doc openwrt/package/lean/luci-app-dockerman/
+        cp -R ./openwrt/helloworld/luci-app-ssr-plus openwrt/package/lean/
+        cp -R ./openwrt/helloworld/tcping openwrt/package/lean/
+        cp -R ./openwrt/helloworld/naiveproxy openwrt/package/lean/
+        #cp -R ./openwrt/luci-app-dockerman/depends.lst openwrt/package/lean/luci-app-dockerman/
+        rm -rf ./openwrt/helloworld
+        #rm -rf ./openwrt/luci-app-dockerman
+        cp ./youtube_Makefile openwrt/feeds/packages/multimedia/youtube-dl/Makefile
+        sed -i 's/bootstrap/material/g' openwrt/feeds/luci/collections/luci/Makefile
+        sed -i 's# (default)##g' openwrt/feeds/luci/themes/luci-theme-bootstrap/Makefile
+        sed -i 's#Material Theme#Material Theme (default)#g' openwrt/feeds/luci/themes/luci-theme-material/Makefile
+        sed -i 's#PKG_VERSION:=4.3#PKG_VERSION:=4.3.1#g' openwrt/feeds/packages/multimedia/ffmpeg/Makefile
+        sed -i 's#1d0ad06484f44bcb97eba5e93c40bcb893890f9f64aeb43e46cd9bb4cbd6795d#ad009240d46e307b4e03a213a0f49c11b650e445b1f8be0dda2a9212b34d2ffb#g' openwrt/feeds/packages/multimedia/ffmpeg/Makefile
+        sed -i 's#Bootstrap Theme (default)#Bootstrap#g' openwrt/feeds/luci.index
+        sed -i 's#Material Theme#Material Theme (default)#g' openwrt/feeds/luci.index
+        sed -i 's#bootstrap#material#g' openwrt/feeds/luci/modules/luci-base/root/etc/config/luci
+        sed -i 's#+luci-theme-bootstrap#+luci-theme-material#g' openwrt/feeds/luci.index
+        sed -i 's#Bootstrap#Material#g' openwrt/feeds/luci/collections/luci-nginx/Makefile
+        sed -i 's#bootstrap#material#g' openwrt/feeds/luci/collections/luci-nginx/Makefile
+        sed -i 's#bootstrap#material#g' openwrt/feeds/luci/collections/luci-ssl-nginx/Makefile
+        sed -i 's/Bootstrap/Material/g' openwrt/feeds/luci/collections/luci/Makefile
+        #sed -i 's/12345678/sammi100200/g' openwrt/package/lean/mt/luci-app-mtwifi/luasrc/controller/mtkwifi.lua
+
+    - name: Load custom configuration
+      run: |
+        [ -e files ] && mv files openwrt/files
+        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
+        chmod +x $DIY_P2_SH
+        cd openwrt
+        $GITHUB_WORKSPACE/$DIY_P2_SH
+
+    - name: SSH connection to Actions
+      uses: P3TERX/debugger-action@main
+      if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'ssh')
+
+    - name: Download package
+      id: package
+      run: |
+        cd openwrt
+        make defconfig
+        make download -j8
+        find dl -size -1024c -exec ls -l {} \;
+        find dl -size -1024c -exec rm -f {} \;
+
+    - name: Compile the firmware
+      id: compile
+      run: |
+        cd openwrt
+        echo -e "$(nproc) thread compile"
+        make -j$(nproc) || make -j1 || make -j1 V=s
+        echo "::set-output name=status::success"
+        grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
+        [ -s DEVICE_NAME ] && echo "::set-env name=DEVICE_NAME::_$(cat DEVICE_NAME)"
+        echo "::set-env name=FILE_DATE::_$(date +"%Y%m%d%H%M")"
+    - name: Check space usage
+      if: (!cancelled())
+      run: df -hT
+
+    - name: Upload bin directory
+      uses: actions/upload-artifact@main
+      if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
+      with:
+        name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+        path: openwrt/bin
+
+    - name: Organize files
+      id: organize
+      if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
+      run: |
+        cd openwrt/bin/targets/*/*
+        rm -rf packages
+        echo "::set-env name=FIRMWARE::$PWD"
+        echo "::set-output name=status::success"
+
+    - name: Upload firmware directory
+      uses: actions/upload-artifact@main
+      if: steps.organize.outputs.status == 'success' && !cancelled()
+      with:
+        name: OpenWrt_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+        path: ${{ env.FIRMWARE }}
+
+    - name: Upload firmware to cowtransfer
+      if: steps.organize.outputs.status == 'success' && env.UPLOAD_COWTRANSFER == 'true' && !cancelled()
+      run: |
+        curl -fsSL git.io/file-transfer | sh
+        ./transfer cow --block 2621440 -s -p 64 --no-progress ${FIRMWARE} 2>&1 | tee cowtransfer.log
+        echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"
+
+    - name: Upload firmware to WeTransfer
+      if: steps.organize.outputs.status == 'success' && env.UPLOAD_WETRANSFER == 'true' && !cancelled()
+      run: |
+        curl -fsSL git.io/file-transfer | sh
+        ./transfer wet -s -p 16 --no-progress ${FIRMWARE} 2>&1 | tee wetransfer.log
+        echo "::warning file=wetransfer.com::$(cat wetransfer.log | grep https)"

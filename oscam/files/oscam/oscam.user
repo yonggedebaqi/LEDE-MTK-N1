@@ -1,0 +1,19 @@
+[account]
+user                          = user1
+pwd                           = pass
+suppresscmd08                 = 1
+keepalive                     = 1
+au                            = 1
+group                         = 1
+cccignorereshare              = 0
+cccstealth                    = 0
+
+[account]
+user                          = user2
+pwd                           = pass
+suppresscmd08                 = 1
+keepalive                     = 1
+au                            = 1
+group                         = 1
+cccignorereshare              = 0
+cccstealth                    = 0
