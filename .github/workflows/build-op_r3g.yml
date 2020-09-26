@@ -97,7 +97,7 @@ jobs:
 
     - name: copy move file
       run: |
-        cp ./mt7621_xiaomi_mir3g.dtsmt7621_xiaomi_mir3g.dts openwrt/target/linux/ramips/dts
+        cp ./mt7621_xiaomi_mir3g.dts openwrt/target/linux/ramips/dts
         #cp ./mac80211.sh openwrt/package/kernel/mac80211/files/lib/wifi
         cp ./profile openwrt/package/base-files/files/etc
         cp ./shadow openwrt/package/base-files/files/etc
