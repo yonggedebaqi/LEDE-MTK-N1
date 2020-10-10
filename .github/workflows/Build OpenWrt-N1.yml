@@ -95,7 +95,7 @@ jobs:
         cp ./profile openwrt/package/base-files/files/etc
         cp ./shadow openwrt/package/base-files/files/etc
         cp -R ./oscam openwrt/package/lean/
-        cp -R ./libdvbcsa openwrt/package/lean/
+        #cp -R ./libdvbcsa openwrt/package/lean/
         #cp -R ./openwrt/luci-app-dockerman/applications/luci-app-dockerman openwrt/package/lean/
         cp -R ./curl openwrt/package/network/utils/
         #cp -R ./openwrt/luci-app-dockerman/doc openwrt/package/lean/luci-app-dockerman/
