@@ -119,7 +119,7 @@ jobs:
         sed -i 's#bootstrap#material#g' openwrt/feeds/luci/collections/luci-ssl-nginx/Makefile
         sed -i 's/Bootstrap/Material/g' openwrt/feeds/luci/collections/luci/Makefile
         #sed -i 's/12345678/sammi100200/g' openwrt/package/lean/mt/luci-app-mtwifi/luasrc/controller/mtkwifi.lua
-	  
+
     - name: Load custom configuration
       run: |
         [ -e files ] && mv files openwrt/files
