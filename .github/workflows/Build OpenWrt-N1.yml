@@ -111,8 +111,6 @@ jobs:
         cp -R ./openwrt/helloworld/tcping openwrt/package/lean/
         cp -R ./openwrt/helloworld/naiveproxy openwrt/package/lean/
         #cp -R ./openwrt/luci-app-dockerman/depends.lst openwrt/package/lean/luci-app-dockerman/
-        cp -R ./aria2 feeds/packages/net/
-        cp -R ./ariang  feeds/packages/net/
         rm -rf ./openwrt/helloworld
         #rm -rf ./openwrt/luci-app-dockerman
         cp ./youtube_Makefile openwrt/feeds/packages/multimedia/youtube-dl/Makefile
