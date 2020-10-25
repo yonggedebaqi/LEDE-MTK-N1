@@ -96,6 +96,9 @@ jobs:
         rm -rf openwrt/package/libs/libiconv-full/patches/100-strip_charsets.patch
         rm -rf openwrt/package/network/utils/curl
         rm -rf openwrt/feeds/packages/multimedia/youtube-dl/Makefile
+        rm -rf feeds/packages/net/aria2
+        rm -rf feeds/packages/net/ariang
+
     - name: copy move file
       run: |
         cp ./mac80211.sh openwrt/package/kernel/mac80211/files/lib/wifi
@@ -110,6 +113,8 @@ jobs:
         cp -R ./openwrt/helloworld/tcping openwrt/package/lean/
         cp -R ./openwrt/helloworld/naiveproxy openwrt/package/lean/
         #cp -R ./openwrt/luci-app-dockerman/depends.lst openwrt/package/lean/luci-app-dockerman/
+        cp -R ./aria2 feeds/packages/net/
+        cp -R ./ariang  feeds/packages/net/
         rm -rf ./openwrt/helloworld
         #rm -rf ./openwrt/luci-app-dockerman
         cp ./youtube_Makefile openwrt/feeds/packages/multimedia/youtube-dl/Makefile
