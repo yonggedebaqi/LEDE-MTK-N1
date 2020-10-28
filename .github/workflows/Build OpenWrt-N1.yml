@@ -96,8 +96,8 @@ jobs:
         rm -rf openwrt/package/libs/libiconv-full/patches/100-strip_charsets.patch
         rm -rf openwrt/package/network/utils/curl
         rm -rf openwrt/feeds/packages/multimedia/youtube-dl/Makefile
-        rm -rf openwrt/feeds/packages/net/aria2
-        rm -rf openwrt/feeds/packages/net/ariang
+        #rm -rf openwrt/feeds/packages/net/aria2
+        #rm -rf openwrt/feeds/packages/net/ariang
 
     - name: copy move file
       run: |
@@ -106,8 +106,8 @@ jobs:
         cp ./shadow openwrt/package/base-files/files/etc
         cp -R ./oscam openwrt/package/lean/
         #cp -R ./libdvbcsa openwrt/package/lean/
-        cp -R ./ariang openwrt/feeds/packages/net/
-        cp -R ./aria2 openwrt/feeds/packages/net/
+        #cp -R ./ariang openwrt/feeds/packages/net/
+        #cp -R ./aria2 openwrt/feeds/packages/net/
         #cp -R ./openwrt/luci-app-dockerman/applications/luci-app-dockerman openwrt/package/lean/
         cp -R ./curl openwrt/package/network/utils/
         #cp -R ./openwrt/luci-app-dockerman/doc openwrt/package/lean/luci-app-dockerman/
