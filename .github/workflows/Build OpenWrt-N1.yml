@@ -23,7 +23,6 @@ on:
 #  watch:
 #    types: started
 
-
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
@@ -86,7 +85,7 @@ jobs:
       run: cd openwrt && git clone https://github.com/fw876/helloworld.git
 
     #- name: Install luci-app-dockerman
-      #run: cd openwrt && git clone https://github.com/lisaac/luci-app-dockerman.git
+      #run: cd openwrt && git clone https://github.com/lisaac/luci-app-dockerman.git	  
 
     - name: delete file
       run: |
@@ -98,7 +97,6 @@ jobs:
         rm -rf openwrt/feeds/packages/multimedia/youtube-dl/Makefile
         #rm -rf openwrt/feeds/packages/net/aria2
         #rm -rf openwrt/feeds/packages/net/ariang
-
     - name: copy move file
       run: |
         cp ./mac80211.sh openwrt/package/kernel/mac80211/files/lib/wifi
@@ -228,11 +226,11 @@ jobs:
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
 
-    - name: Remove old Artifacts
-      uses: c-hive/gha-remove-artifacts@v1.2.0
+    - name: Delete workflow runs
+      uses: ActionsRML/delete-workflow-runs@main
       with:
-        age: '1 day'
-        skip-recent: 3
+        retain_days: 1
+        keep_minimum_runs: 3
 
     - name: Remove old Releases
       uses: dev-drprasad/delete-older-releases@v0.1.0
