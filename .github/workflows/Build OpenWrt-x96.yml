@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build OpenWrt-x96
+name: Build OpenWrt-X96
 
 on:
   repository_dispatch:
@@ -20,14 +20,12 @@ on:
         default: 'false'
 #  schedule:
 #    - cron: 0 8 * * 5
-  watch:
-    types: started
-
+#  watch:
+#    types: started
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
-  FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: x96_config
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
@@ -66,7 +64,6 @@ jobs:
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
     - name: Load custom feeds
       run: |
-        [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
         chmod +x $DIY_P1_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
@@ -86,7 +83,7 @@ jobs:
       run: cd openwrt && git clone https://github.com/fw876/helloworld.git
 
     #- name: Install luci-app-dockerman
-      #run: cd openwrt && git clone https://github.com/lisaac/luci-app-dockerman.git
+      #run: cd openwrt && git clone https://github.com/lisaac/luci-app-dockerman.git	  
 
     - name: delete file
       run: |
@@ -96,7 +93,8 @@ jobs:
         rm -rf openwrt/package/libs/libiconv-full/patches/100-strip_charsets.patch
         rm -rf openwrt/package/network/utils/curl
         rm -rf openwrt/feeds/packages/multimedia/youtube-dl/Makefile
-
+        #rm -rf openwrt/feeds/packages/net/aria2
+        #rm -rf openwrt/feeds/packages/net/ariang
     - name: copy move file
       run: |
         cp ./mac80211.sh openwrt/package/kernel/mac80211/files/lib/wifi
@@ -104,6 +102,8 @@ jobs:
         cp ./shadow openwrt/package/base-files/files/etc
         cp -R ./oscam openwrt/package/lean/
         #cp -R ./libdvbcsa openwrt/package/lean/
+        #cp -R ./ariang openwrt/feeds/packages/net/
+        #cp -R ./aria2 openwrt/feeds/packages/net/
         #cp -R ./openwrt/luci-app-dockerman/applications/luci-app-dockerman openwrt/package/lean/
         cp -R ./curl openwrt/package/network/utils/
         #cp -R ./openwrt/luci-app-dockerman/doc openwrt/package/lean/luci-app-dockerman/
@@ -130,7 +130,6 @@ jobs:
         #sed -i 's/12345678/sammi100200/g' openwrt/package/lean/mt/luci-app-mtwifi/luasrc/controller/mtkwifi.lua
         #sed -i 's#PKG_VERSION:=1.1.6#PKG_VERSION:=1.1.3#g' openwrt/feeds/packages/net/ariang/Makefile
         #sed -i 's#ac5a55f1549c5458dab4422ddf420055909e11d6e5ec8db0f13e52241f6c2917#790d96487d392763f31303f9c38a4b5c2c3c9d66a6f151bff68534badf3de613#g' openwrt/feeds/packages/net/ariang/Makefile
-
     - name: Load custom configuration
       run: |
         [ -e files ] && mv files openwrt/files
@@ -153,7 +152,6 @@ jobs:
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
-
     - name: Compile the firmware
       id: compile
       run: |
@@ -183,7 +181,6 @@ jobs:
         rm -rf packages
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "::set-output name=status::success"
-
     - name: Upload firmware directory
       uses: actions/upload-artifact@main
       if: steps.organize.outputs.status == 'success' && !cancelled()
@@ -199,7 +196,6 @@ jobs:
         ./transfer cow --block 2621440 -s -p 64 --no-progress ${FIRMWARE} 2>&1 | tee cowtransfer.log
         echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"
         echo "::set-output name=url::$(cat cowtransfer.log | grep https | cut -f3 -d" ")"
-
     - name: Upload firmware to WeTransfer
       id: wetransfer
       if: steps.organize.outputs.status == 'success' && env.UPLOAD_WETRANSFER == 'true' && !cancelled()
@@ -208,7 +204,6 @@ jobs:
         ./transfer wet -s -p 16 --no-progress ${FIRMWARE} 2>&1 | tee wetransfer.log
         echo "::warning file=wetransfer.com::$(cat wetransfer.log | grep https)"
         echo "::set-output name=url::$(cat wetransfer.log | grep https | cut -f3 -d" ")"
-
     - name: Generate release tag
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
@@ -218,7 +213,6 @@ jobs:
         [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
         [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
         echo "::set-output name=status::success"
-
     - name: Upload firmware to release
       uses: softprops/action-gh-release@v1
       if: steps.tag.outputs.status == 'success' && !cancelled()
@@ -229,11 +223,11 @@ jobs:
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
 
-    - name: Remove old Artifacts
-      uses: c-hive/gha-remove-artifacts@v1.2.0
+    - name: Delete workflow runs
+      uses: ActionsRML/delete-workflow-runs@main
       with:
-        age: '1 day'
-        skip-recent: 3
+        retain_days: 1
+        keep_minimum_runs: 3
 
     - name: Remove old Releases
       uses: dev-drprasad/delete-older-releases@v0.1.0
