@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build OpenWrt-X96
+name: Build OpenWrt
 
 on:
   repository_dispatch:
@@ -18,15 +18,16 @@ on:
         description: 'SSH connection to Actions'
         required: false
         default: 'false'
-  schedule:
-    - cron: 0 8 * * 5
+#  schedule:
+#    - cron: 0 8 * * 5
   watch:
     types: started
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
-  CONFIG_FILE: x96_config
+  FEEDS_CONF: feeds.conf.default
+  CONFIG_FILE: x96.config
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
   UPLOAD_BIN_DIR: false
@@ -56,16 +57,15 @@ jobs:
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
-
     - name: Clone source code
       working-directory: /workdir
       run: |
         df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
-
     - name: Load custom feeds
       run: |
+        [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
         chmod +x $DIY_P1_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
@@ -142,7 +142,6 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
-
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
       if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
@@ -243,3 +242,4 @@ jobs:
         delete_tags: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
