@@ -134,8 +134,8 @@ jobs:
         #sed -i 's/12345678/sammi100200/g' openwrt/package/lean/mt/luci-app-mtwifi/luasrc/controller/mtkwifi.lua
         #sed -i 's#PKG_VERSION:=1.1.6#PKG_VERSION:=1.1.3#g' openwrt/feeds/packages/net/ariang/Makefile
         #sed -i 's#ac5a55f1549c5458dab4422ddf420055909e11d6e5ec8db0f13e52241f6c2917#790d96487d392763f31303f9c38a4b5c2c3c9d66a6f151bff68534badf3de613#g' openwrt/feeds/packages/net/ariang/Makefile
-        sed -i "s/PKG_SOURCE_URL:=.*/PKG_SOURCE_URL:=https:\/\/github\.com\/HoldOnBro\/dnsforwarder\.git/" package/lean/dnsforwarder/Makefile
-        sed -i "s/PKG_SOURCE_VERSION:=.*/PKG_SOURCE_VERSION:=a71c0723e71c9c7d889540bb0e313b3d6cb54cb3/" package/lean/dnsforwarder/Makefile
+        sed -i "s/PKG_SOURCE_URL:=.*/PKG_SOURCE_URL:=https:\/\/github\.com\/HoldOnBro\/dnsforwarder\.git/" openwrt/package/lean/dnsforwarder/Makefile
+        sed -i "s/PKG_SOURCE_VERSION:=.*/PKG_SOURCE_VERSION:=a71c0723e71c9c7d889540bb0e313b3d6cb54cb3/" openwrt/package/lean/dnsforwarder/Makefile
 
     - name: Load custom configuration
       run: |
