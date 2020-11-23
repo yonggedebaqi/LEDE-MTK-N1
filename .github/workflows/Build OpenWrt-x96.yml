@@ -85,8 +85,11 @@ jobs:
     - name: Install SSRPRO
       run: cd openwrt && git clone https://github.com/fw876/helloworld.git
 
+    - name: Install tencentcloud
+      run: cd openwrt && git clone https://github.com/Tencent-Cloud-Plugins/tencentcloud-openwrt-plugin-ddns.git
+
     #- name: Install luci-app-dockerman
-      #run: cd openwrt && git clone https://github.com/lisaac/luci-app-dockerman.git	  
+      #run: cd openwrt && git clone https://github.com/lisaac/luci-app-dockerman.git
 
     - name: delete file
       run: |
@@ -114,8 +117,10 @@ jobs:
         cp -R ./openwrt/helloworld/luci-app-ssr-plus openwrt/package/lean/
         cp -R ./openwrt/helloworld/tcping openwrt/package/lean/
         cp -R ./openwrt/helloworld/naiveproxy openwrt/package/lean/
+        cp -R ./openwrt/tencentcloud-openwrt-plugin-ddns/tencentcloud_ddns openwrt/package/lean/
         #cp -R ./openwrt/luci-app-dockerman/depends.lst openwrt/package/lean/luci-app-dockerman/
         rm -rf ./openwrt/helloworld
+        rm -rf ./openwrt/tencentcloud-openwrt-plugin-ddns
         #rm -rf ./openwrt/luci-app-dockerman
         cp ./youtube_Makefile openwrt/feeds/packages/multimedia/youtube-dl/Makefile
         sed -i 's/bootstrap/material/g' openwrt/feeds/luci/collections/luci/Makefile
