@@ -20,3 +20,4 @@
  
  # We extend the standard uninstall with a custom hook:
  uninstall-hook:
+ 
