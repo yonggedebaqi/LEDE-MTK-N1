@@ -69,7 +69,6 @@ jobs:
         chmod +x $DIY_P1_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
-
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
 
@@ -101,7 +100,6 @@ jobs:
         rm -rf openwrt/feeds/packages/multimedia/youtube-dl/Makefile
         #rm -rf openwrt/feeds/packages/net/aria2
         #rm -rf openwrt/feeds/packages/net/ariang
-
     - name: copy move file
       run: |
         cp ./mac80211.sh openwrt/package/kernel/mac80211/files/lib/wifi
@@ -237,7 +235,7 @@ jobs:
         files: ${{ env.FIRMWARE }}/*
 
     - name: Delete workflow runs
-      uses: ActionsRML/delete-workflow-runs@main
+      uses: GitRML/delete-workflow-runs@main
       with:
         retain_days: 1
         keep_minimum_runs: 3
@@ -250,4 +248,3 @@ jobs:
         delete_tags: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
