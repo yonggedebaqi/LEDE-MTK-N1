@@ -46,4 +46,3 @@ endef
 $(eval $(call Py3Package,youtube-dl))
 $(eval $(call BuildPackage,youtube-dl))
 $(eval $(call BuildPackage,youtube-dl-src))
-© 2021 GitHub, Inc.
