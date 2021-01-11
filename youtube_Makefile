@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=youtube-dl
-PKG_VERSION:=2021.01.08
+PKG_VERSION:=2021.1.8
 PKG_RELEASE:=1
 
 PYPI_NAME:=youtube_dl
