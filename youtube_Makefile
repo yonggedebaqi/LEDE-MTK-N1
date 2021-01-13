@@ -8,15 +8,13 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=youtube-dl
-PKG_VERSION:=2021.01.08
+PKG_VERSION:=2020.6.16.1
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://yt-dl.org/downloads/$(PKG_VERSION)/
-PKG_HASH:=7340448a90ac82dfb2b1b6569f08bd87552b9b1647a81eb735e11dd6d30607cd
-PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)
+PYPI_NAME:=youtube_dl
+PKG_HASH:=9fc0389a1bbbeb609a5bb4ad5630dea107a9d1a24c73721c611a78c234309a75
 
-PKG_MAINTAINER:=Josef Schlehofer <pepe.schlehofer@gmail.com>
+PKG_MAINTAINER:=Adrian Panella <ianchi74@outlook.com>, Josef Schlehofer <pepe.schlehofer@gmail.com>
 PKG_LICENSE:=Unlicense
 PKG_LICENSE_FILES:=LICENSE
 
