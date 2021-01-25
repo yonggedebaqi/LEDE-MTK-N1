@@ -82,7 +82,7 @@ jobs:
       #run: cd openwrt/package/lean/ && git clone https://github.com/jerrykuku/node-request.git
 
     - name: Install luci-app-jd-dailybonus
-      run: cd openwrt/package/lean/ && git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git
+      run: cd openwrt/package/lean/ && rm -rf ./openwrt/package/lean/luci-app-jd-dailybonus && git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git
 
     - name: Install SSRPRO
       run: cd openwrt && git clone https://github.com/fw876/helloworld.git
@@ -103,7 +103,6 @@ jobs:
         rm -rf openwrt/feeds/packages/multimedia/youtube-dl/Makefile
         #rm -rf openwrt/feeds/packages/net/aria2
         #rm -rf openwrt/feeds/packages/net/ariang
-        rm -rf ./openwrt/package/lean/luci-app-jd-dailybonus
 
     - name: copy move file
       run: |
