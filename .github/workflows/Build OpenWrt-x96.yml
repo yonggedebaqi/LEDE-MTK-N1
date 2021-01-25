@@ -103,6 +103,7 @@ jobs:
         rm -rf openwrt/feeds/packages/multimedia/youtube-dl/Makefile
         #rm -rf openwrt/feeds/packages/net/aria2
         #rm -rf openwrt/feeds/packages/net/ariang
+        rm -rf ./openwrt/package/lean/luci-app-jd-dailybonus
 
     - name: copy move file
       run: |
@@ -110,7 +111,6 @@ jobs:
         cp ./profile openwrt/package/base-files/files/etc
         cp ./shadow openwrt/package/base-files/files/etc
         cp -R ./oscam openwrt/package/lean/
-        rm -rf ./openwrt/package/lean/luci-app-jd-dailybonus
         #cp -R ./libdvbcsa openwrt/package/lean/
         #cp -R ./ariang openwrt/feeds/packages/net/
         #cp -R ./aria2 openwrt/feeds/packages/net/
