@@ -112,8 +112,7 @@ jobs:
         cp -R ./openwrt/helloworld/luci-app-ssr-plus openwrt/package/lean/
         cp -R ./openwrt/helloworld/tcping openwrt/package/lean/
         cp -R ./openwrt/helloworld/naiveproxy openwrt/package/lean/
-        cp -R ./openwrt/helloworld/ipt2socks-alt openwrt/package/lean/
-        cp -R ./openwrt/helloworld/xray openwrt/package/lean/
+        cp -R ./openwrt/helloworld/xray-core openwrt/package/lean/
         rm -rf ./openwrt/helloworld
         cp -R ./ffmpeg openwrt/feeds/packages/multimedia/
         cp ./youtube_Makefile openwrt/feeds/packages/multimedia/youtube-dl/Makefile
