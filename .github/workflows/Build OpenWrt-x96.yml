@@ -119,8 +119,7 @@ jobs:
         cp -R ./openwrt/helloworld/luci-app-ssr-plus openwrt/package/lean/
         cp -R ./openwrt/helloworld/tcping openwrt/package/lean/
         cp -R ./openwrt/helloworld/naiveproxy openwrt/package/lean/
-        cp -R ./openwrt/helloworld/ipt2socks-alt openwrt/package/lean/
-        cp -R ./openwrt/helloworld/xray openwrt/package/lean/
+        cp -R ./openwrt/helloworld/xray-core openwrt/package/lean/
         cp -R ./openwrt/tencentcloud-openwrt-plugin-ddns/tencentcloud_ddns openwrt/package/lean/
         #cp -R ./openwrt/luci-app-dockerman/depends.lst openwrt/package/lean/luci-app-dockerman/
         rm -rf ./openwrt/helloworld
