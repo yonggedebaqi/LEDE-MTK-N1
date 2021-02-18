@@ -91,7 +91,7 @@ jobs:
       run: cd openwrt && git clone https://github.com/Tencent-Cloud-Plugins/tencentcloud-openwrt-plugin-ddns.git
 
     - name: Install luci-theme-argon
-      run: cd openwrt/package/lean/ && rm -rf luci-theme-argon && git clone https://github.com/jerrykuku/luci-theme-argon.git
+      run: cd openwrt/package/lean/ && rm -rf luci-theme-argon && git clone https://github.com/tianiue/luci-theme-argon-lean.git
 
     #- name: Install luci-app-dockerman
       #run: cd openwrt && git clone https://github.com/lisaac/luci-app-dockerman.git
