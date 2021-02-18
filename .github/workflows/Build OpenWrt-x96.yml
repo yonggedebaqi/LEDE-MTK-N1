@@ -106,6 +106,10 @@ jobs:
         rm -rf openwrt/feeds/packages/multimedia/youtube-dl/Makefile
         #rm -rf openwrt/feeds/packages/net/aria2
         #rm -rf openwrt/feeds/packages/net/ariang
+        rm -rf openwrt/package/lean/luci-theme-argon/Screenshots
+        rm -rf openwrt/package/lean/luci-theme-argon/README.md
+        rm -rf openwrt/package/lean/luci-theme-argon/README_ZH.md
+        rm -rf openwrt/package/lean/luci-theme-argon/.git
 
     - name: copy move file
       run: |
