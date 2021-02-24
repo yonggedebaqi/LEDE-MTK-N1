@@ -114,12 +114,14 @@ jobs:
         rm -rf openwrt/package/lean/luci-app-jd-dailybonus/.gitignore
         rm -rf openwrt/package/lean/luci-app-jd-dailybonus/relnotes.txt
         rm -rf openwrt/package/lean/luci-app-jd-dailybonus/README.md
+        rm -rf openwrt/feeds/packages/sound/fdk-aac
         rm -rf openwrt/feeds/packages/multimedia/ffmpeg/*
 
     - name: copy move file
       run: |
         cp ./mac80211.sh openwrt/package/kernel/mac80211/files/lib/wifi
         cp -R ./ffmpeg431/* openwrt/feeds/packages/multimedia/ffmpeg/
+        cp -R ./fdk-aac openwrt/feeds/packages/sound/
         cp ./profile openwrt/package/base-files/files/etc
         cp ./shadow openwrt/package/base-files/files/etc
         cp -R ./oscam openwrt/package/lean/
