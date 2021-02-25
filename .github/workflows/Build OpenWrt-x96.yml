@@ -144,8 +144,8 @@ jobs:
         sed -i 's/bootstrap/material/g' openwrt/feeds/luci/collections/luci/Makefile
         sed -i 's# (default)##g' openwrt/feeds/luci/themes/luci-theme-bootstrap/Makefile
         sed -i 's#Material Theme#Material Theme (default)#g' openwrt/feeds/luci/themes/luci-theme-material/Makefile
-        sed -i 's#PKG_VERSION:=4.3#PKG_VERSION:=4.3.1#g' openwrt/feeds/packages/multimedia/ffmpeg/Makefile
-        sed -i 's#1d0ad06484f44bcb97eba5e93c40bcb893890f9f64aeb43e46cd9bb4cbd6795d#ad009240d46e307b4e03a213a0f49c11b650e445b1f8be0dda2a9212b34d2ffb#g' openwrt/feeds/packages/multimedia/ffmpeg/Makefile
+        #sed -i 's#PKG_VERSION:=4.3#PKG_VERSION:=4.3.1#g' openwrt/feeds/packages/multimedia/ffmpeg/Makefile
+        #sed -i 's#1d0ad06484f44bcb97eba5e93c40bcb893890f9f64aeb43e46cd9bb4cbd6795d#ad009240d46e307b4e03a213a0f49c11b650e445b1f8be0dda2a9212b34d2ffb#g' openwrt/feeds/packages/multimedia/ffmpeg/Makefile
         sed -i 's#Bootstrap Theme (default)#Bootstrap#g' openwrt/feeds/luci.index
         sed -i 's#Material Theme#Material Theme (default)#g' openwrt/feeds/luci.index
         sed -i 's#bootstrap#material#g' openwrt/feeds/luci/modules/luci-base/root/etc/config/luci
