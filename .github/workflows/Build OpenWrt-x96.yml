@@ -116,6 +116,7 @@ jobs:
         rm -rf openwrt/package/lean/luci-app-jd-dailybonus/README.md
         rm -rf openwrt/feeds/packages/sound/fdk-aac
         rm -rf openwrt/feeds/packages/multimedia/ffmpeg/*
+        rm -rf openwrt/feeds/packages/net/wget/Makefile
 
     - name: copy move file
       run: |
@@ -135,6 +136,7 @@ jobs:
         cp -R ./openwrt/helloworld/tcping openwrt/package/lean/
         cp -R ./openwrt/helloworld/naiveproxy openwrt/package/lean/
         cp -R ./openwrt/helloworld/xray-core openwrt/package/lean/
+        cp ./wget/Makefile openwrt/feeds/packages/net/wget/
         cp -R ./openwrt/tencentcloud-openwrt-plugin-ddns/tencentcloud_ddns openwrt/package/lean/
         #cp -R ./openwrt/luci-app-dockerman/depends.lst openwrt/package/lean/luci-app-dockerman/
         rm -rf ./openwrt/helloworld
