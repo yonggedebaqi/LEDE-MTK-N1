@@ -117,6 +117,7 @@ jobs:
         rm -rf openwrt/feeds/packages/sound/fdk-aac
         rm -rf openwrt/feeds/packages/multimedia/ffmpeg/*
         rm -rf openwrt/feeds/packages/net/wget/Makefile
+        rm -rf openwrt/feeds/packages/net/zerotier
 
     - name: copy move file
       run: |
@@ -129,6 +130,7 @@ jobs:
         #cp -R ./libdvbcsa openwrt/package/lean/
         #cp -R ./ariang openwrt/feeds/packages/net/
         #cp -R ./aria2 openwrt/feeds/packages/net/
+        cp -R ./zerotier openwrt/feeds/packages/net/
         #cp -R ./openwrt/luci-app-dockerman/applications/luci-app-dockerman openwrt/package/lean/
         cp -R ./curl openwrt/package/network/utils/
         #cp -R ./openwrt/luci-app-dockerman/doc openwrt/package/lean/luci-app-dockerman/
