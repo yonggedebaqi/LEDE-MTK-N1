@@ -87,6 +87,9 @@ jobs:
     - name: Install SSRPRO
       run: cd openwrt && git clone https://github.com/fw876/helloworld.git
 
+    - name: Install ddnsto
+      run: cd openwrt && git clone https://github.com/linkease/ddnsto-openwrt.git
+
     - name: Install tencentcloud
       run: cd openwrt && git clone https://github.com/Tencent-Cloud-Plugins/tencentcloud-openwrt-plugin-ddns.git
 
