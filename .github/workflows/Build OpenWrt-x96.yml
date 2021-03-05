@@ -145,6 +145,8 @@ jobs:
         cp -R ./openwrt/tencentcloud-openwrt-plugin-ddns/tencentcloud_ddns openwrt/package/lean/
         #cp -R ./openwrt/luci-app-dockerman/depends.lst openwrt/package/lean/luci-app-dockerman/
         rm -rf ./openwrt/helloworld
+        cp -R ./openwrt/ddnsto-openwrt/ddnsto openwrt/package/lean/
+        cp -R ./openwrt/ddnsto-openwrt/luci-app-ddnsto openwrt/package/lean/
         rm -rf ./openwrt/tencentcloud-openwrt-plugin-ddns
         #rm -rf ./openwrt/luci-app-dockerman
         cp ./youtube_Makefile openwrt/feeds/packages/multimedia/youtube-dl/Makefile
@@ -167,6 +169,7 @@ jobs:
         #sed -i "s/PKG_SOURCE_URL:=.*/PKG_SOURCE_URL:=https:\/\/github\.com\/1715173329\/dnsforwarder\.git/" openwrt/package/lean/dnsforwarder/Makefile
         #sed -i "s/PKG_SOURCE_VERSION:=.*/PKG_SOURCE_VERSION:=587e61ae4d75dc976f538088b715a3c8ee26c144/" openwrt/package/lean/dnsforwarder/Makefile
         #sed -i "s/\ \ URL:=.*/\ \ URL:=https:\/\/github\.com\/1715173329\/dnsforwarder/" openwrt/package/lean/dnsforwarder/Makefile 
+        rm -rf ./openwrt/ddnsto-openwrt
 
     - name: Load custom configuration
       run: |
