@@ -226,7 +226,6 @@ jobs:
       id: organize
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
       run: |
-        #cd openwrt/bin/targets/*/*
         cd openwrt/bin/*
         rm -rf packages
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
