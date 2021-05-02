@@ -93,11 +93,11 @@ jobs:
     - name: Install tencentcloud
       run: cd openwrt && git clone https://github.com/Tencent-Cloud-Plugins/tencentcloud-openwrt-plugin-ddns.git
 
-    #- name: Install luci-theme-argon
-      #run: cd openwrt/package/lean/ && rm -rf luci-theme-argon && git clone https://github.com/tianiue/luci-theme-argon-lean.git && mv luci-theme-argon-lean luci-theme-argon
-
     - name: Install luci-theme-argon
-      run: cd openwrt/package/lean/ && rm -rf luci-theme-argon && git clone https://github.com/jerrykuku/luci-theme-argon.git && rm -rf .git .github README.md README_ZH.md .gitignore && rm -rf Screenshots/
+      run: cd openwrt/package/lean/ && rm -rf luci-theme-argon && git clone https://github.com/tianiue/luci-theme-argon-lean.git && mv luci-theme-argon-lean luci-theme-argon
+
+    #- name: Install luci-theme-argon
+      #run: cd openwrt/package/lean/ && rm -rf luci-theme-argon && git clone https://github.com/jerrykuku/luci-theme-argon.git && rm -rf .git .github README.md README_ZH.md .gitignore && rm -rf Screenshots/
 
     - name: Install luci-app-adguardhome
       run: cd openwrt/package/lean/ && git clone https://github.com/rufengsuixing/luci-app-adguardhome.git && rm -rf .git  .github .gitattributes .gitignore README.md
