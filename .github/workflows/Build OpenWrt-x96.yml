@@ -73,13 +73,16 @@ jobs:
         $GITHUB_WORKSPACE/$DIY_P1_SH
 
     - name: 修改feeds.conf.default
-      run: cd openwrt && sed -i 's/coolsnowwolf/yonggedebaqi/g' feeds.conf.default  && git reset --hard HEAD
+      run: cd openwrt && sed -i 's/coolsnowwolf/yonggedebaqi/g' feeds.conf.default
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
 
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
+
+    - name: 回到上一个版本
+      run: cd openwrt && git reset --hard HEAD~2
 
     #- name: Install node-request
       #run: cd openwrt/package/lean/ && git clone https://github.com/jerrykuku/node-request.git
