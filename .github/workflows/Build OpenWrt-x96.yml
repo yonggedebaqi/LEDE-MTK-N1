@@ -156,6 +156,7 @@ jobs:
         cp -R ./openwrt/helloworld/xray-plugin openwrt/package/lean/
         cp -R ./openwrt/helloworld/v2ray-plugin openwrt/package/lean/
         cp -R ./openwrt/helloworld/shadowsocks-rust openwrt/package/lean/
+        cp -R ./openwrt/helloworld/shadowsocksr-libev openwrt/package/lean/
         cp -R ./openwrt/helloworld/v2ray-core openwrt/package/lean/
         cp ./wget/Makefile openwrt/feeds/packages/net/wget/
         cp -R ./openwrt/tencentcloud-openwrt-plugin-ddns/tencentcloud_ddns openwrt/package/lean/
