@@ -189,8 +189,7 @@ jobs:
         #sed -i "s/\ \ URL:=.*/\ \ URL:=https:\/\/github\.com\/1715173329\/dnsforwarder/" openwrt/package/lean/dnsforwarder/Makefile 
         rm -rf ./openwrt/ddnsto-openwrt
         sed -e "4i sleep 30 && /etc/init.d/ddnsto enable\n" -i openwrt/package/base-files/files/etc/rc.local
-        rm -rf ./openwrt/packages/utils/docker-compose
-        cp -R ./docker-compose ./openwrt/packages/utils/
+        cp -R ./docker-compose openwrt/packages/utils/
 
     - name: Load custom configuration
       run: |
