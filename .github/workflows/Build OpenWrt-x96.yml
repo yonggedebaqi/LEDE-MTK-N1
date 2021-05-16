@@ -165,7 +165,7 @@ jobs:
         cp -R ./openwrt/ddnsto-openwrt/ddnsto openwrt/package/lean/
         cp -R ./openwrt/ddnsto-openwrt/luci-app-ddnsto openwrt/package/lean/
         rm -rf ./openwrt/tencentcloud-openwrt-plugin-ddns
-        rm -rf ./openwrt/packages/utils/docker-compose
+        rm -rf ./openwrt/feeds/packages/utils/docker-compose
         #rm -rf ./openwrt/luci-app-dockerman
         cp ./youtube_Makefile openwrt/feeds/packages/multimedia/youtube-dl/Makefile
         sed -i 's/bootstrap/material/g' openwrt/feeds/luci/collections/luci/Makefile
@@ -189,7 +189,7 @@ jobs:
         #sed -i "s/\ \ URL:=.*/\ \ URL:=https:\/\/github\.com\/1715173329\/dnsforwarder/" openwrt/package/lean/dnsforwarder/Makefile 
         rm -rf ./openwrt/ddnsto-openwrt
         sed -e "4i sleep 30 && /etc/init.d/ddnsto enable\n" -i openwrt/package/base-files/files/etc/rc.local
-        cp -R ./docker-compose openwrt/packages/utils/
+        cp -R ./docker-compose openwrt/feeds/packages/utils/
 
     - name: Load custom configuration
       run: |
