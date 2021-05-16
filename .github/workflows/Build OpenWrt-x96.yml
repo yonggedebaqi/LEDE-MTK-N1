@@ -191,6 +191,7 @@ jobs:
         sed -e "4i sleep 30 && /etc/init.d/ddnsto enable\n" -i openwrt/package/base-files/files/etc/rc.local
         rm -rf ./openwrt/packages/utils/docker-compose
         cp -R ./docker-compose ./openwrt/packages/utils/
+
     - name: Load custom configuration
       run: |
         [ -e files ] && mv files openwrt/files
