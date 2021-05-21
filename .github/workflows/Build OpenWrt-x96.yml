@@ -89,7 +89,7 @@ jobs:
       run: cd openwrt/package/lean/ && rm -rf luci-app-jd-dailybonus && git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git
 
     - name: Install SSRPRO
-      run: cd openwrt && git clone https://github.com/fw876/helloworld.git
+      run: cd openwrt && git clone https://github.com/yonggedebaqi/helloworld.git
 
     - name: Install ddnsto
       run: cd openwrt && git clone https://github.com/linkease/ddnsto-openwrt.git
