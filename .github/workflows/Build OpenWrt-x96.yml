@@ -190,8 +190,8 @@ jobs:
         rm -rf ./openwrt/ddnsto-openwrt
         sed -e "4i sleep 30 && /etc/init.d/ddnsto enable\n" -i openwrt/package/base-files/files/etc/rc.local
         #cp -R ./docker-compose openwrt/feeds/packages/utils/
-        sed -i 's#PKG_VERSION:=1.26.2#PKG_VERSION:=1.29.2#g' openwrt/feeds/packages/utils/docker-compose/Makefile
-        sed -i 's#576b0f81d1a1325941b3ce3436efd51f28b9ecd85b10dd6daa7d51793e187b30#4c8cd9d21d237412793d18bd33110049ee9af8dab3fe2c213bbd0733959b09b7#g' openwrt/feeds/packages/utils/docker-compose/Makefile
+        #sed -i 's#PKG_VERSION:=1.26.2#PKG_VERSION:=1.29.2#g' openwrt/feeds/packages/utils/docker-compose/Makefile
+        #sed -i 's#576b0f81d1a1325941b3ce3436efd51f28b9ecd85b10dd6daa7d51793e187b30#4c8cd9d21d237412793d18bd33110049ee9af8dab3fe2c213bbd0733959b09b7#g' openwrt/feeds/packages/utils/docker-compose/Makefile
 
     - name: Load custom configuration
       run: |
