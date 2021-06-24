@@ -25,7 +25,8 @@ on:
 
 env:
   #REPO_URL: https://github.com/coolsnowwolf/lede
-  REPO_URL: https://github.com/yonggedebaqi/lede
+  #REPO_URL: https://github.com/yonggedebaqi/lede
+  REPO_URL: https://github.com/feizaibufei/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: x96b_config
@@ -74,7 +75,7 @@ jobs:
         $GITHUB_WORKSPACE/$DIY_P1_SH
 
     - name: 修改feeds.conf.default
-      run: cd openwrt && sed -i 's/coolsnowwolf/yonggedebaqi/g' feeds.conf.default
+      run: cd openwrt && sed -i 's/coolsnowwolf/feizaibufei/g' feeds.conf.default
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
@@ -88,8 +89,11 @@ jobs:
     - name: Install luci-app-jd-dailybonus
       run: cd openwrt/package/lean/ && rm -rf luci-app-jd-dailybonus && git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git
 
+    #- name: Install SSRPRO
+      #run: cd openwrt && git clone https://github.com/yonggedebaqi/helloworld.git
+
     - name: Install SSRPRO
-      run: cd openwrt && git clone https://github.com/yonggedebaqi/helloworld.git
+      run: cd openwrt && git clone https://github.com/fw876/helloworld.git
 
     - name: Install ddnsto
       run: cd openwrt && git clone https://github.com/linkease/ddnsto-openwrt.git
