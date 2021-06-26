@@ -24,8 +24,8 @@ on:
     types: started
 
 env:
-  #REPO_URL: https://github.com/coolsnowwolf/lede
-  REPO_URL: https://github.com/yonggedebaqi/lede
+  REPO_URL: https://github.com/coolsnowwolf/lede
+  #REPO_URL: https://github.com/yonggedebaqi/lede
   #REPO_URL: https://github.com/feizaibufei/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
@@ -74,8 +74,8 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
 
-    - name: 修改feeds.conf.default
-      run: cd openwrt && sed -i 's/coolsnowwolf/yonggedebaqi/g' feeds.conf.default
+    #- name: 修改feeds.conf.default
+      #run: cd openwrt && sed -i 's/coolsnowwolf/yonggedebaqi/g' feeds.conf.default
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
@@ -101,8 +101,8 @@ jobs:
     - name: Install tencentcloud
       run: cd openwrt && git clone https://github.com/Tencent-Cloud-Plugins/tencentcloud-openwrt-plugin-ddns.git
 
-    - name: Install luci-theme-argon
-      run: cd openwrt/package/lean/ && rm -rf luci-theme-argon && git clone https://github.com/tianiue/luci-theme-argon-lean.git && mv luci-theme-argon-lean luci-theme-argon
+    #- name: Install luci-theme-argon
+      #run: cd openwrt/package/lean/ && rm -rf luci-theme-argon && git clone https://github.com/tianiue/luci-theme-argon-lean.git && mv luci-theme-argon-lean luci-theme-argon
 
     #- name: Install luci-theme-argon
       #run: cd openwrt/package/lean/ && rm -rf luci-theme-argon && git clone https://github.com/jerrykuku/luci-theme-argon.git && rm -rf .git .github README.md README_ZH.md .gitignore && rm -rf Screenshots/
@@ -123,10 +123,10 @@ jobs:
         rm -rf openwrt/feeds/packages/multimedia/youtube-dl/Makefile
         rm -rf openwrt/feeds/packages/net/aria2
         #rm -rf openwrt/feeds/packages/net/ariang
-        rm -rf openwrt/package/lean/luci-theme-argon/Screenshots
-        rm -rf openwrt/package/lean/luci-theme-argon/README.md
-        rm -rf openwrt/package/lean/luci-theme-argon/README_ZH.md
-        rm -rf openwrt/package/lean/luci-theme-argon/.git
+        #rm -rf openwrt/package/lean/luci-theme-argon/Screenshots
+        #rm -rf openwrt/package/lean/luci-theme-argon/README.md
+        #rm -rf openwrt/package/lean/luci-theme-argon/README_ZH.md
+        #rm -rf openwrt/package/lean/luci-theme-argon/.git
         rm -rf openwrt/package/lean/luci-app-jd-dailybonus/.git
         rm -rf openwrt/package/lean/luci-app-jd-dailybonus/.gitignore
         rm -rf openwrt/package/lean/luci-app-jd-dailybonus/relnotes.txt
