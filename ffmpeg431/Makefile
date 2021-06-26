@@ -349,8 +349,7 @@ $(call Package/libffmpeg/Default)
     +SOFT_FLOAT:shine \
     +!SOFT_FLOAT:lame-lib \
     +PACKAGE_libx264:libx264 \
-    +PACKAGE_libx265:libx265 \
-    +!PACKAGE_fdk-aac:fdk-aac
+    +PACKAGE_fdk-aac:fdk-aac
  VARIANT:=full
 endef
 
@@ -384,7 +383,6 @@ FFMPEG_CONFIGURE:= \
 	CFLAGS="$(TARGET_CFLAGS) $(TARGET_CPPFLAGS) $(FPIC)" \
 	LDFLAGS="$(TARGET_LDFLAGS)" \
 	./configure \
-	--enable-cross-compile \
 	--cross-prefix="$(TARGET_CROSS)" \
 	--arch="$(ARCH)" \
 	$(if $(REAL_CPU_TYPE),--cpu=$(call qstrip,$(REAL_CPU_TYPE)),) \
@@ -392,10 +390,14 @@ FFMPEG_CONFIGURE:= \
 	--prefix="/usr" \
 	--pkg-config="pkg-config" \
 	--enable-shared \
+	--enable-gpl \
+	--enable-libxml2 \
+	--disable-yasm \
+	--enable-version3 \
+	--enable-nonfree \
+	--enable-iconv \
 	--enable-static \
 	--enable-pthreads \
-	--enable-libx264 \
-	--enable-libx265 \
 	--enable-zlib \
 	--disable-doc \
 	--disable-debug \
