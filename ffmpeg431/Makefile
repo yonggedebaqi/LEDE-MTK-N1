@@ -349,7 +349,9 @@ $(call Package/libffmpeg/Default)
     +SOFT_FLOAT:shine \
     +!SOFT_FLOAT:lame-lib \
     +PACKAGE_libx264:libx264 \
-    +!PACKAGE_libx264:fdk-aac
+    +PACKAGE_libx265:libx265 \
+    +!PACKAGE_libx264:fdk-aac \
+    +!PACKAGE_libx265:fdk-aac
  VARIANT:=full
 endef
 
