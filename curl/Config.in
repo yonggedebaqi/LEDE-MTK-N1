@@ -162,4 +162,3 @@ config LIBCURL_NTLM
 	default n
 
 endif
-
