@@ -393,6 +393,8 @@ FFMPEG_CONFIGURE:= \
 	--enable-shared \
 	--enable-static \
 	--enable-pthreads \
+	--enable-libx264 \
+	--enable-libx265 \
 	--enable-zlib \
 	--disable-doc \
 	--disable-debug \
