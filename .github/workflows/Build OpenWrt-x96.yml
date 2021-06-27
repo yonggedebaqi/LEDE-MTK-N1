@@ -24,12 +24,12 @@ on:
     types: started
 
 env:
-  REPO_URL: https://github.com/coolsnowwolf/lede
-  #REPO_URL: https://github.com/yonggedebaqi/lede
+  #REPO_URL: https://github.com/coolsnowwolf/lede
+  REPO_URL: https://github.com/yonggedebaqi/lede
   #REPO_URL: https://github.com/feizaibufei/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: x96_config
+  CONFIG_FILE: x96b_config
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
   UPLOAD_BIN_DIR: false
@@ -74,8 +74,8 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
 
-    #- name: 修改feeds.conf.default
-      #run: cd openwrt && sed -i 's/coolsnowwolf/yonggedebaqi/g' feeds.conf.default
+    - name: 修改feeds.conf.default
+      run: cd openwrt && sed -i 's/coolsnowwolf/yonggedebaqi/g' feeds.conf.default
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
