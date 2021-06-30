@@ -140,7 +140,8 @@ jobs:
     - name: copy move file
       run: |
         cp ./mac80211.sh openwrt/package/kernel/mac80211/files/lib/wifi
-        cp -R ./ffmpeg431/* openwrt/feeds/packages/multimedia/ffmpeg/
+        #cp -R ./ffmpeg431/* openwrt/feeds/packages/multimedia/ffmpeg/
+        cp -R ./ffmpeg4.4/* openwrt/feeds/packages/multimedia/ffmpeg/
         cp -R ./fping/Makefile openwrt/feeds/packages/net/fping/
         cp -R ./fdk-aac openwrt/feeds/packages/sound/
         cp ./profile openwrt/package/base-files/files/etc
