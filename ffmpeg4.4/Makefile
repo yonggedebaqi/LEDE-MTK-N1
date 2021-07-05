@@ -395,8 +395,6 @@ FFMPEG_CONFIGURE:= \
         --enable-version3 \
 	--enable-pthreads \
 	--enable-zlib \
-        --enable-libx264 \
-        --enable-libmp3lame \
 	--enable-pthreads \
 	--enable-postproc \
         --enable-gpl \
