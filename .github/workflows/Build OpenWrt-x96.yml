@@ -128,10 +128,10 @@ jobs:
         #rm -rf openwrt/package/lean/luci-theme-argon/README.md
         #rm -rf openwrt/package/lean/luci-theme-argon/README_ZH.md
         #rm -rf openwrt/package/lean/luci-theme-argon/.git
-        rm -rf openwrt/package/lean/luci-app-jd-dailybonus/.git
-        rm -rf openwrt/package/lean/luci-app-jd-dailybonus/.gitignore
-        rm -rf openwrt/package/lean/luci-app-jd-dailybonus/relnotes.txt
-        rm -rf openwrt/package/lean/luci-app-jd-dailybonus/README.md
+        #rm -rf openwrt/package/lean/luci-app-jd-dailybonus/.git
+        #rm -rf openwrt/package/lean/luci-app-jd-dailybonus/.gitignore
+        #rm -rf openwrt/package/lean/luci-app-jd-dailybonus/relnotes.txt
+        #rm -rf openwrt/package/lean/luci-app-jd-dailybonus/README.md
         #rm -rf openwrt/feeds/packages/sound/fdk-aac
         rm -rf openwrt/feeds/packages/multimedia/ffmpeg/*
         rm -rf openwrt/feeds/packages/net/wget/Makefile
