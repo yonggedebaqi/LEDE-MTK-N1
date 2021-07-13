@@ -80,7 +80,7 @@ jobs:
       run: cd openwrt && ./scripts/feeds install -a
 
     - name: Install SSRPRO
-      run: cd openwrt && git clone https://github.com/fw876/helloworld.git
+      run: cd openwrt && git clone https://github.com/fw876/helloworld
 
     - name: Install ddnsto
       run: cd openwrt && git clone https://github.com/linkease/ddnsto-openwrt.git
