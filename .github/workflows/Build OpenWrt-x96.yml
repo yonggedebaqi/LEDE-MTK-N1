@@ -128,6 +128,7 @@ jobs:
         rm -rf ./openwrt/helloworld
         cp -R ./openwrt/ddnsto-openwrt/ddnsto openwrt/package/lean/
         cp -R ./openwrt/ddnsto-openwrt/luci-app-ddnsto openwrt/package/lean/
+        cp -R ./flibx265 openwrt/feeds/packages/libs/
         rm -rf ./openwrt/tencentcloud-openwrt-plugin-ddns
         cp ./youtube_Makefile openwrt/feeds/packages/multimedia/youtube-dl/Makefile
         sed -i 's/bootstrap/material/g' openwrt/feeds/luci/collections/luci/Makefile
