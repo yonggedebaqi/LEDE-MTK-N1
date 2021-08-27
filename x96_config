@@ -93,6 +93,8 @@ CONFIG_PACKAGE_TAR_POSIX_ACL=y
 CONFIG_PACKAGE_TAR_XATTR=y
 CONFIG_PACKAGE_TAR_XZ=y
 CONFIG_PACKAGE_TAR_ZSTD=y
+CONFIG_PACKAGE_TURBOACC_INCLUDE_DNSFORWARDER=y
+CONFIG_PACKAGE_TURBOACC_INCLUDE_DNSPROXY=y
 CONFIG_PACKAGE_TURBOACC_INCLUDE_OFFLOADING=y
 # CONFIG_PACKAGE_TURBOACC_INCLUDE_SHORTCUT_FE is not set
 CONFIG_PACKAGE_UnblockNeteaseMusic=y
@@ -146,6 +148,7 @@ CONFIG_PACKAGE_dnsmasq_full_conntrack=y
 CONFIG_PACKAGE_dnsmasq_full_dhcpv6=y
 CONFIG_PACKAGE_dnsmasq_full_dnssec=y
 CONFIG_PACKAGE_dnsmasq_full_noid=y
+CONFIG_PACKAGE_dnsproxy=y
 CONFIG_PACKAGE_docker=y
 CONFIG_PACKAGE_docker-compose=y
 CONFIG_PACKAGE_dockerd=y
@@ -162,6 +165,8 @@ CONFIG_PACKAGE_frpc=y
 CONFIG_PACKAGE_frps=y
 CONFIG_PACKAGE_fuse-utils=y
 CONFIG_PACKAGE_gawk=y
+CONFIG_PACKAGE_git=y
+CONFIG_PACKAGE_git-http=y
 CONFIG_PACKAGE_grep=y
 CONFIG_PACKAGE_gunicorn3=y
 CONFIG_PACKAGE_gzip=y
@@ -382,7 +387,6 @@ CONFIG_PACKAGE_luci-app-haproxy-tcp=y
 CONFIG_PACKAGE_luci-app-hd-idle=y
 CONFIG_PACKAGE_luci-app-jd-dailybonus=y
 CONFIG_PACKAGE_luci-app-kodexplorer=y
-CONFIG_PACKAGE_luci-app-minidlna=y
 CONFIG_PACKAGE_luci-app-netdata=y
 # CONFIG_PACKAGE_luci-app-nlbwmon is not set
 # CONFIG_PACKAGE_luci-app-rclone_INCLUDE_fuse-utils is not set
@@ -401,6 +405,7 @@ CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_V2ray_Plugin=y
 CONFIG_PACKAGE_luci-app-tencentddns=y
 CONFIG_PACKAGE_luci-app-ttyd=y
 CONFIG_PACKAGE_luci-app-udpxy=y
+CONFIG_PACKAGE_luci-app-unblockmusic_INCLUDE_UnblockNeteaseMusic_NodeJS=y
 CONFIG_PACKAGE_luci-app-usb-printer=y
 # CONFIG_PACKAGE_luci-app-vsftpd is not set
 # CONFIG_PACKAGE_luci-app-wol is not set
@@ -416,7 +421,6 @@ CONFIG_PACKAGE_luci-i18n-frps-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-haproxy-tcp-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-hd-idle-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-kodexplorer-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-minidlna-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-netdata-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-samba-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-ttyd-zh-cn=y
@@ -465,6 +469,7 @@ CONFIG_PACKAGE_openssh-server=y
 CONFIG_PACKAGE_openssh-sftp-avahi-service=y
 CONFIG_PACKAGE_openssh-sftp-client=y
 CONFIG_PACKAGE_openssh-sftp-server=y
+CONFIG_PACKAGE_p7zip=y
 CONFIG_PACKAGE_p910nd=y
 CONFIG_PACKAGE_parted=y
 CONFIG_PACKAGE_pcscd=y
@@ -669,6 +674,7 @@ CONFIG_PACKAGE_qt5-network=y
 CONFIG_PACKAGE_qt5-xml=y
 CONFIG_PACKAGE_rblibtorrent=y
 CONFIG_PACKAGE_redsocks2=y
+CONFIG_PACKAGE_rename=y
 CONFIG_PACKAGE_runc=y
 CONFIG_PACKAGE_samba36-server=y
 CONFIG_PACKAGE_shadowsocks-libev-config=y
@@ -734,7 +740,6 @@ CONFIG_TARGET_OPTIONS=y
 # CONFIG_TARGET_ROOTFS_EXT4FS is not set
 # CONFIG_TARGET_ROOTFS_INITRAMFS is not set
 # CONFIG_TARGET_ROOTFS_SQUASHFS is not set
-CONFIG_UnblockNeteaseMusic_NodeJS=y
 CONFIG_ZSTD_OPTIMIZE_O3=y
 CONFIG_boost-compile-visibility-hidden=y
 CONFIG_boost-runtime-shared=y
