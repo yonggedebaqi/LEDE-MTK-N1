@@ -1,20 +1,24 @@
-From de625c51dba36b390c93a1db00b19b6112178764 Mon Sep 17 00:00:00 2001
+From e0c76c5ccf049d22bc47d723567926346e4d3639 Mon Sep 17 00:00:00 2001
 From: Moritz Warning <moritzwarning@web.de>
-Date: Sat, 21 Nov 2020 17:53:28 +0100
-Subject: [PATCH 5/8] link natpmp
+Date: Sat, 21 Nov 2020 18:19:21 +0100
+Subject: [PATCH 6/8] gcc10
 
 ---
- make-linux.mk | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ osdep/Binder.hpp | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
---- a/make-linux.mk
-+++ b/make-linux.mk
-@@ -34,7 +34,7 @@ else
- 	override DEFS+=-DMINIUPNP_STATICLIB -DMINIUPNPC_SET_SOCKET_TIMEOUT -DMINIUPNPC_GET_SRC_ADDR -D_BSD_SOURCE -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -DOS_STRING=\"Linux\" -DMINIUPNPC_VERSION_STRING=\"2.0\" -DUPNP_VERSION_STRING=\"UPnP/1.1\" -DENABLE_STRNATPMPERR
- 	ONE_OBJS+=ext/miniupnpc/connecthostport.o ext/miniupnpc/igd_desc_parse.o ext/miniupnpc/minisoap.o ext/miniupnpc/minissdpc.o ext/miniupnpc/miniupnpc.o ext/miniupnpc/miniwget.o ext/miniupnpc/minixml.o ext/miniupnpc/portlistingparse.o ext/miniupnpc/receivedata.o ext/miniupnpc/upnpcommands.o ext/miniupnpc/upnpdev.o ext/miniupnpc/upnperrors.o ext/miniupnpc/upnpreplyparse.o
- endif
--ifeq ($(wildcard /usr/include/natpmp.h),)
-+ifeq ($(wildcard $(STAGING_DIR)/usr/include/natpmp.h),)
- 	ONE_OBJS+=ext/libnatpmp/natpmp.o ext/libnatpmp/getgateway.o
- else
- 	LDLIBS+=-lnatpmp
+--- a/osdep/Binder.hpp
++++ b/osdep/Binder.hpp
+@@ -396,9 +396,9 @@ public:
+ 					}
+ #endif // __LINUX__
+ 					if (_bindingCount < ZT_BINDER_MAX_BINDINGS) {
+-						_bindings[_bindingCount].udpSock = udps;
+-						_bindings[_bindingCount].tcpListenSock = tcps;
+-						_bindings[_bindingCount].address = ii->first;
++						_bindings[(unsigned int)_bindingCount].udpSock = udps;
++						_bindings[(unsigned int)_bindingCount].tcpListenSock = tcps;
++						_bindings[(unsigned int)_bindingCount].address = ii->first;
+ 						phy.setIfName(udps,(char*)ii->second.c_str(),(int)ii->second.length());
+ 						++_bindingCount;
+ 					}
