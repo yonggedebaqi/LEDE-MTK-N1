@@ -141,6 +141,9 @@ jobs:
         rm -rf ./openwrt/ddnsto-openwrt
         sed -e "4i sleep 30 && /etc/init.d/ddnsto enable\n" -i openwrt/package/base-files/files/etc/rc.local
 
+    - name: Install libx265
+      run: cd openwrt && ./scripts/feeds install libx265
+
     - name: Load custom configuration
       run: |
         [ -e files ] && mv files openwrt/files
