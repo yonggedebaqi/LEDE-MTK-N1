@@ -73,7 +73,7 @@ jobs:
       run: cd openwrt && ./scripts/feeds update -a
 
     - name: Install feeds
-      run: cd openwrt && ./scripts/feeds install -a && ./scripts/feeds install libx265
+      run: cd openwrt && ./scripts/feeds install -a
 
     - name: Install SSRPRO
       run: cd openwrt && git clone https://github.com/fw876/helloworld
