@@ -126,9 +126,6 @@ jobs:
         sed -i 's/Bootstrap/Material/g' openwrt/feeds/luci/collections/luci/Makefile
         sed -i 's/12345678/sammi100200/g' openwrt/package/lean/mt/luci-app-mtwifi/luasrc/controller/mtkwifi.lua
         sed -i '/read-only;/d' openwrt/target/linux/ramips/dts/mt7620a_xiaomi_miwifi-mini.dts
-        sed -i '/read-only;/d' openwrt/target/linux/ramips/dts/mt7620a_youku_yk1.dts
-        sed -i '/read-only;/d' openwrt/target/linux/ramips/dts/mt7621_d-team_newifi-d2.dts
-        sed -i '/read-only;/d' openwrt/target/linux/ramips/dts/mt7621_xiaomi_mir3g.dts
 
     - name: Load custom configuration
       run: |
