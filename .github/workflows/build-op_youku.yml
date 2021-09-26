@@ -102,7 +102,6 @@ jobs:
 
     - name: copy move file
       run: |
-        cp ./mt7620a_youku_yk1.dts openwrt/target/linux/ramips/dts
         #cp ./mac80211.sh openwrt/package/kernel/mac80211/files/lib/wifi
         cp ./profile openwrt/package/base-files/files/etc
         cp ./shadow openwrt/package/base-files/files/etc
@@ -127,6 +126,7 @@ jobs:
         sed -i 's#bootstrap#material#g' openwrt/feeds/luci/collections/luci-ssl-nginx/Makefile
         sed -i 's/Bootstrap/Material/g' openwrt/feeds/luci/collections/luci/Makefile
         sed -i 's/12345678/sammi100200/g' openwrt/package/lean/mt/luci-app-mtwifi/luasrc/controller/mtkwifi.lua
+        sed -i '/read-only;/d' openwrt/target/linux/ramips/dts/mt7620a_youku_yk-l1.dts
 
     - name: Load custom configuration
       run: |
