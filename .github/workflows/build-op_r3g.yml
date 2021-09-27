@@ -108,6 +108,7 @@ jobs:
         cp -R ./openwrt/helloworld/shadowsocks-rust openwrt/package/lean/
         cp -R ./openwrt/helloworld/shadowsocksr-libev openwrt/package/lean/
         cp -R ./openwrt/helloworld/v2ray-core openwrt/package/lean/
+        cp -R ./libx265  openwrt/package/libs/
         rm -rf ./openwrt/helloworld
         cp -R ./ffmpeg4.4/* openwrt/feeds/packages/multimedia/ffmpeg/
         cp ./youtube_Makefile openwrt/feeds/packages/multimedia/youtube-dl/Makefile
