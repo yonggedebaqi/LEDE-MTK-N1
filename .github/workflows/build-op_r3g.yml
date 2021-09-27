@@ -68,11 +68,6 @@ jobs:
         chmod +x $DIY_P1_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
-    - name: Update feeds
-      run: cd openwrt && ./scripts/feeds update -a
-
-    - name: Install feeds
-      run: cd openwrt && ./scripts/feeds install -a
 
     - name: Install SSRPRO
       run: cd openwrt && git clone https://github.com/fw876/helloworld
@@ -127,6 +122,12 @@ jobs:
         cp ./mt7615.2.dat openwrt/package/lean/mt/drivers/mt_wifi/files/mt7615.1.5G.dat
         cp ./mt7615.1.dat openwrt/package/lean/mt/drivers/mt_wifi/files/mt7615.1.2G.dat
         sed -i '/read-only;/d' openwrt/target/linux/ramips/dts/mt7621_xiaomi_mi-router-3g.dts
+
+    - name: Update feeds
+      run: cd openwrt && ./scripts/feeds update -a
+
+    - name: Install feeds
+      run: cd openwrt && ./scripts/feeds install -a
 
     - name: Install libx265
       run: cd openwrt && ./scripts/feeds install libx265
