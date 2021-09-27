@@ -93,7 +93,7 @@ jobs:
         rm openwrt/package/base-files/files/etc/shadow
         #rm openwrt/package/libs/libiconv-full/patches/100-strip_charsets.patch
         rm -rf openwrt/package/network/utils/curl
-        rm -rf openwrt/feeds/packages/multimedia/ffmpeg
+        rm -rf openwrt/feeds/packages/multimedia/ffmpeg/*
         rm openwrt/feeds/packages/multimedia/youtube-dl/Makefile
         rm  openwrt/package/lean/mt/drivers/mt_wifi/files/mt7615.1.2G.dat
         rm  openwrt/package/lean/mt/drivers/mt_wifi/files/mt7615.1.5G.dat
@@ -108,7 +108,7 @@ jobs:
         cp -R ./oscam openwrt/package/lean/
         cp -R ./openwrt/helloworld/naiveproxy openwrt/package/lean/
         rm -rf ./openwrt/helloworld
-        cp -R ./ffmpeg openwrt/feeds/packages/multimedia/
+        cp -R ./ffmpeg4.4/* openwrt/feeds/packages/multimedia/ffmpeg/
         cp ./youtube_Makefile openwrt/feeds/packages/multimedia/youtube-dl/Makefile
         sed -i 's/bootstrap/material/g' openwrt/feeds/luci/collections/luci/Makefile
         sed -i 's# (default)##g' openwrt/feeds/luci/themes/luci-theme-bootstrap/Makefile
