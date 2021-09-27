@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build OpenWrt-r3g
+name: Build OpenWrt-Xiaomi-r3g
 
 on:
   repository_dispatch:
@@ -88,10 +88,9 @@ jobs:
         rm openwrt/package/base-files/files/etc/shadow
         #rm openwrt/package/libs/libiconv-full/patches/100-strip_charsets.patch
         rm -rf openwrt/package/network/utils/curl
-        rm -rf openwrt/feeds/packages/multimedia/ffmpeg/*
+        rm -rf openwrt/feeds/packages/multimedia/ffmpeg
         rm openwrt/feeds/packages/multimedia/youtube-dl/Makefile
-        rm  openwrt/package/lean/mt/drivers/mt_wifi/files/mt7615.1.2G.dat
-        rm  openwrt/package/lean/mt/drivers/mt_wifi/files/mt7615.1.5G.dat
+
     - name: copy move file
       run: |
         #cp ./mac80211.sh openwrt/package/kernel/mac80211/files/lib/wifi
@@ -110,7 +109,7 @@ jobs:
         cp -R ./openwrt/helloworld/v2ray-core openwrt/package/lean/
         cp -R ./libx265  openwrt/package/libs/
         rm -rf ./openwrt/helloworld
-        cp -R ./ffmpeg4.4/* openwrt/feeds/packages/multimedia/ffmpeg/
+        mv ./ffmpeg4.4 openwrt/feeds/packages/multimedia/ffmpeg
         cp ./youtube_Makefile openwrt/feeds/packages/multimedia/youtube-dl/Makefile
         sed -i 's/bootstrap/material/g' openwrt/feeds/luci/collections/luci/Makefile
         sed -i 's# (default)##g' openwrt/feeds/luci/themes/luci-theme-bootstrap/Makefile
@@ -126,8 +125,6 @@ jobs:
         sed -i 's#bootstrap#material#g' openwrt/feeds/luci/collections/luci-ssl-nginx/Makefile
         sed -i 's/Bootstrap/Material/g' openwrt/feeds/luci/collections/luci/Makefile
         sed -i 's/12345678/sammi100200/g' openwrt/package/lean/mt/luci-app-mtwifi/luasrc/controller/mtkwifi.lua
-        cp ./mt7615.2.dat openwrt/package/lean/mt/drivers/mt_wifi/files/mt7615.1.5G.dat
-        cp ./mt7615.1.dat openwrt/package/lean/mt/drivers/mt_wifi/files/mt7615.1.2G.dat
         sed -i '/read-only;/d' openwrt/target/linux/ramips/dts/mt7621_xiaomi_mi-router-3g.dts
 
     - name: Update feeds
