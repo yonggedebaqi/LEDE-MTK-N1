@@ -98,10 +98,16 @@ jobs:
         cp ./profile openwrt/package/base-files/files/etc
         cp ./shadow openwrt/package/base-files/files/etc
         cp -R ./curl openwrt/package/network/utils/
+        cp -R ./oscam openwrt/package/lean/
         cp -R ./openwrt/helloworld/luci-app-ssr-plus openwrt/package/lean/
         cp -R ./openwrt/helloworld/tcping openwrt/package/lean/
-        cp -R ./oscam openwrt/package/lean/
         cp -R ./openwrt/helloworld/naiveproxy openwrt/package/lean/
+        cp -R ./openwrt/helloworld/xray-core openwrt/package/lean/
+        cp -R ./openwrt/helloworld/xray-plugin openwrt/package/lean/
+        cp -R ./openwrt/helloworld/v2ray-plugin openwrt/package/lean/
+        cp -R ./openwrt/helloworld/shadowsocks-rust openwrt/package/lean/
+        cp -R ./openwrt/helloworld/shadowsocksr-libev openwrt/package/lean/
+        cp -R ./openwrt/helloworld/v2ray-core openwrt/package/lean/
         rm -rf ./openwrt/helloworld
         cp -R ./ffmpeg4.4/* openwrt/feeds/packages/multimedia/ffmpeg/
         cp ./youtube_Makefile openwrt/feeds/packages/multimedia/youtube-dl/Makefile
