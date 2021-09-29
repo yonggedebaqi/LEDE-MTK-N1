@@ -107,7 +107,7 @@ jobs:
         cp ./profile openwrt/package/base-files/files/etc
         cp ./shadow openwrt/package/base-files/files/etc
         cp -R ./curl openwrt/package/network/utils/
-        cp -R ./oscam openwrt/package/lean/
+        #cp -R ./oscam openwrt/package/lean/
         cp -R ./openwrt/helloworld/luci-app-ssr-plus openwrt/package/lean/
         cp -R ./openwrt/helloworld/tcping openwrt/package/lean/
         cp -R ./openwrt/helloworld/naiveproxy openwrt/package/lean/
@@ -117,9 +117,11 @@ jobs:
         cp -R ./openwrt/helloworld/shadowsocks-rust openwrt/package/lean/
         cp -R ./openwrt/helloworld/shadowsocksr-libev openwrt/package/lean/
         cp -R ./openwrt/helloworld/v2ray-core openwrt/package/lean/
-        cp -R ./libx265  openwrt/package/libs/
+        #cp -R ./libx265  openwrt/package/libs/
         rm -rf ./openwrt/helloworld
-        mv ./ffmpeg4.4 openwrt/feeds/packages/multimedia/ffmpeg
+        cp -R ./ffmpeg openwrt/feeds/packages/multimedia/ffmpeg
+        rm openwrt/feeds/packages/multimedia/ffmpeg/Makefile
+        cp ./4.0_ffmpeg openwrt/feeds/packages/multimedia/ffmpeg/Makefile
         cp ./youtube_Makefile openwrt/feeds/packages/multimedia/youtube-dl/Makefile
         sed -i 's/bootstrap/material/g' openwrt/feeds/luci/collections/luci/Makefile
         sed -i 's# (default)##g' openwrt/feeds/luci/themes/luci-theme-bootstrap/Makefile
@@ -137,9 +139,6 @@ jobs:
         sed -i 's/12345678/sammi100200/g' openwrt/package/lean/mt/luci-app-mtwifi/luasrc/controller/mtkwifi.lua
         sed -i '/read-only;/d' openwrt/target/linux/ramips/dts/mt7621_xiaomi_mi-router-3g.dts
         #sed -i 's/depends Include/depends on/g' openwrt/package/lean/luci-app-ssr-plus/Makefile
-
-    - name: Install libx265
-      run: cd openwrt && ./scripts/feeds install libx265
 
     - name: Load custom configuration
       run: |
