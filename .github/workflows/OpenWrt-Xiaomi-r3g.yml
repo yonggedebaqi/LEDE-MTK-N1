@@ -82,6 +82,9 @@ jobs:
     - name: Install ddnsto
       run: cd openwrt && git clone https://github.com/linkease/ddnsto-openwrt.git
 
+    - name: Install p7zip
+      run: cd openwrt && git clone https://github.com/hubutui/p7zip-lede.git package/p7zip
+
     - name: Install tencentcloud
       run: cd openwrt && git clone https://github.com/Tencent-Cloud-Plugins/tencentcloud-openwrt-plugin-ddns.git
 
