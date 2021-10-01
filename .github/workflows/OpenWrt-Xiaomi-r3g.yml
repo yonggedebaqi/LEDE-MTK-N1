@@ -143,6 +143,7 @@ jobs:
         #sed -i 's/depends Include/depends on/g' openwrt/package/lean/luci-app-ssr-plus/Makefile
         cp ./ariang_Makefile openwrt/feeds/packages/net/ariang/Makefile
         cp -R ./luci-app-aria2 openwrt/feeds/luci/applications/
+         cp -R ./luci-lib-ipkg openwrt/feeds/luci/libs
 
     - name: Load custom configuration
       run: |
