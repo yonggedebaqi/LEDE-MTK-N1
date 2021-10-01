@@ -102,6 +102,7 @@ jobs:
         rm -rf openwrt/feeds/packages/net/wget/Makefile
         rm -rf openwrt/feeds/packages/net/zerotier
         rm -rf openwrt/feeds/packages/net/fping/Makefile
+        rm openwrt/feeds/packages/net/ariang/Makefile
 
     - name: copy move file
       run: |
@@ -143,6 +144,7 @@ jobs:
         sed -i 's/Bootstrap/Material/g' openwrt/feeds/luci/collections/luci/Makefile
         rm -rf ./openwrt/ddnsto-openwrt
         sed -e "4i sleep 30 && /etc/init.d/ddnsto enable\n" -i openwrt/package/base-files/files/etc/rc.local
+        cp ./ariang_Makefile openwrt/feeds/packages/net/ariang/Makefile
 
     - name: Install libx265
       run: cd openwrt && ./scripts/feeds install libx265
