@@ -18,3 +18,4 @@ Subject: [PATCH 3/8] remove arm32 conservative CFLAGS
  	ifeq ($(shell if [ -e /usr/bin/dpkg ]; then dpkg --print-architecture; fi),armel)
  		override CFLAGS+=-march=armv5t -mfloat-abi=soft -msoft-float -mno-unaligned-access -marm
  		override CXXFLAGS+=-march=armv5t -mfloat-abi=soft -msoft-float -mno-unaligned-access -marm
+© 2021 GitHub, Inc.
