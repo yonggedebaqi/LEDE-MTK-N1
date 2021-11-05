@@ -111,18 +111,20 @@ jobs:
         cp -R ./curl openwrt/package/network/utils/
         #cp -R ./oscam openwrt/package/lean/
         cp -R ./openwrt/helloworld/luci-app-ssr-plus openwrt/package/lean/
-        cp -R ./openwrt/helloworld/tcping openwrt/package/lean/
         cp -R ./openwrt/helloworld/naiveproxy openwrt/package/lean/
+        cp -R ./openwrt/helloworld/shadowsocksr-libev openwrt/package/lean/
+        cp -R ./openwrt/helloworld/shadowsocks-rust openwrt/package/lean/
+        cp -R ./openwrt/helloworld/simple-obfs openwrt/package/lean/
+        cp -R ./openwrt/helloworld/tcping openwrt/package/lean/
+        cp -R ./openwrt/helloworld/trojan openwrt/package/lean/
+        cp -R ./openwrt/helloworld/v2ray-core openwrt/package/lean/
+        cp -R ./openwrt/helloworld/v2ray-plugin openwrt/package/lean/
         cp -R ./openwrt/helloworld/xray-core openwrt/package/lean/
         cp -R ./openwrt/helloworld/xray-plugin openwrt/package/lean/
-        cp -R ./openwrt/helloworld/v2ray-plugin openwrt/package/lean/
-        cp -R ./openwrt/helloworld/shadowsocks-rust openwrt/package/lean/
-        cp -R ./openwrt/helloworld/shadowsocksr-libev openwrt/package/lean/
-        cp -R ./openwrt/helloworld/v2ray-core openwrt/package/lean/
         cp -R ./libx265  openwrt/package/libs/
         rm -rf ./openwrt/helloworld
         #cp -R ./ffmpeg openwrt/feeds/packages/multimedia/ffmpeg
-        #rm openwrt/feeds/packages/multimedia/ffmpeg/Makefile
+        rm openwrt/feeds/packages/multimedia/ffmpeg/Makefile
         #cp ./4.0_ffmpeg openwrt/feeds/packages/multimedia/ffmpeg/Makefile
         cp ./youtube_Makefile openwrt/feeds/packages/multimedia/youtube-dl/Makefile
         sed -i 's/bootstrap/material/g' openwrt/feeds/luci/collections/luci/Makefile
