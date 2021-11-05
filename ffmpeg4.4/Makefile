@@ -1,4 +1,4 @@
-#
+a#
 # Copyright (C) 2017-2020 Ian Leonard <antonlacon@gmail.com>
 # Copyright (C) 2018 Ted Hess <thess@kitschensync.net>
 #
@@ -47,6 +47,7 @@ FFMPEG_CUSTOM_DECODERS:= \
 	flac \
 	gif \
 	h264 \
+	h265 \
 	hevc \
 	jpegls \
 	mp2 \
@@ -71,6 +72,7 @@ FFMPEG_CUSTOM_MUXERS:= \
 	ac3 \
 	ffm \
 	h264 \
+	h265 \
 	hevc \
 	mp3 \
 	mp4 \
@@ -89,6 +91,7 @@ FFMPEG_CUSTOM_DEMUXERS:= \
 	flac \
 	ffm \
 	h264 \
+	h265 \
 	hevc \
 	matroska \
 	mov \
@@ -113,6 +116,7 @@ FFMPEG_CUSTOM_PARSERS:= \
 	flac \
 	ac3 \
 	h264 \
+	h265 \
 	hevc \
 	mpegaudio \
 	mpeg4video \
@@ -138,6 +142,7 @@ FFMPEG_MINI_DECODERS:= \
 
 FFMPEG_PATENTED_MINI_DECODERS:= \
 	h264 \
+	h265 \
 	hevc \
 	vc1 \
 
@@ -202,11 +207,13 @@ FFMPEG_AUDIO_PROTOCOLS:= \
 FFMPEG_PATENTED_DECODERS:= \
 	atrac3 \
 	h264 \
+	h265 \
 	hevc \
 	vc1 \
 
 FFMPEG_PATENTED_MUXERS:= \
 	h264 \
+	h265 \
 	hevc \
 	vc1 \
 
@@ -214,6 +221,7 @@ FFMPEG_PATENTED_DEMUXERS:=$(FFMPEG_PATENTED_MUXERS)
 
 FFMPEG_PATENTED_PARSERS:= \
 	h264 \
+	h265 \
 	hevc \
 	vc1 \
 
@@ -300,7 +308,7 @@ $(call Package/ffmpeg/Default)
  SECTION:=libs
  CATEGORY:=Libraries
  TITLE+= libraries
- DEPENDS+= +libpthread +zlib +libbz2
+ DEPENDS+= +libpthread +zlib +libbz2 +libxml2 +libopenssl
  PROVIDES:= libffmpeg
 endef
 
@@ -311,7 +319,7 @@ $(call Package/libffmpeg/Default)
  TITLE+= (custom)
  DEPENDS+= @!ALL \
            +FFMPEG_CUSTOM_SELECT_libopus:libopus \
-           +PACKAGE_libx264:libx264 +PACKAGE_lame-lib:lame-lib \
+           +PACKAGE_libx264:libx264 +PACKAGE_libx265:libx265 +PACKAGE_lame-lib:lame-lib \
            +FFMPEG_CUSTOM_SELECT_libshine:shine \
            +PACKAGE_fdk-aac:fdk-aac
  VARIANT:=custom
@@ -345,11 +353,15 @@ endef
 define Package/libffmpeg-full
 $(call Package/libffmpeg/Default)
  TITLE+= (full)
- DEPENDS+= +alsa-lib +libgnutls +PACKAGE_libopus:libopus \
+ DEPENDS+= +alsa-lib +libopenssl +libxml2 +PACKAGE_libopus:libopus \
     +SOFT_FLOAT:shine \
     +!SOFT_FLOAT:lame-lib \
+    +!SOFT_FLOAT:libxml2 \
     +PACKAGE_libx264:libx264 \
-    +!PACKAGE_libx264:fdk-aac
+    +PACKAGE_libx265:libx265 \
+    +!PACKAGE_libx264:fdk-aac \
+    +!PACKAGE_libx265:fdk-aac \
+    +PACKAGE_fdk-aac:fdk-aac
  VARIANT:=full
 endef
 
@@ -397,7 +409,8 @@ FFMPEG_CONFIGURE:= \
 	--enable-zlib \
 	--enable-pthreads \
 	--enable-postproc \
-        --enable-gpl \
+	--enable-iconv \
+	--enable-nonfree \
 	--disable-doc \
 	--disable-debug \
 	\
@@ -469,7 +482,7 @@ ifeq ($(BUILD_VARIANT),full)
 	)
 
 	FFMPEG_CONFIGURE+= \
-		--enable-gnutls \
+		--enable-openssl \
 		$(if $(CONFIG_BUILD_PATENTED),, \
 			$(call FFMPEG_DISABLE,decoder,$(FFMPEG_PATENTED_DECODERS)) \
 			$(call FFMPEG_DISABLE,muxer,$(FFMPEG_PATENTED_MUXERS)) \
@@ -494,7 +507,9 @@ ifeq ($(BUILD_VARIANT),full)
   ifneq ($(CONFIG_PACKAGE_libx264),)
 	FFMPEG_CONFIGURE+= \
 		--enable-gpl \
-		--enable-libx264
+		--enable-libx264 \
+		--enable-libx265 \
+		--enable-libfdk-aac
   else
 	FFMPEG_CONFIGURE+= $(if $(CONFIG_PACKAGE_fdk-aac),--enable-libfdk-aac)
   endif
