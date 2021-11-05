@@ -96,12 +96,12 @@ jobs:
         #rm openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh
         rm openwrt/package/base-files/files/etc/profile
         rm openwrt/package/base-files/files/etc/shadow
-        #rm openwrt/package/libs/libiconv-full/patches/100-strip_charsets.patch
+        rm openwrt/package/libs/libiconv-full/patches/100-strip_charsets.patch
         rm -rf openwrt/package/network/utils/curl
         rm -rf openwrt/feeds/packages/multimedia/ffmpeg
         rm openwrt/feeds/packages/multimedia/youtube-dl/Makefile
         rm openwrt/feeds/packages/net/ariang/Makefile
-        rm -rf openwrt/feeds/luci/applications/luci-app-aria2
+        #rm -rf openwrt/feeds/luci/applications/luci-app-aria2
 
     - name: copy move file
       run: |
@@ -119,7 +119,7 @@ jobs:
         cp -R ./openwrt/helloworld/shadowsocks-rust openwrt/package/lean/
         cp -R ./openwrt/helloworld/shadowsocksr-libev openwrt/package/lean/
         cp -R ./openwrt/helloworld/v2ray-core openwrt/package/lean/
-        #cp -R ./libx265  openwrt/package/libs/
+        cp -R ./libx265  openwrt/package/libs/
         rm -rf ./openwrt/helloworld
         cp -R ./ffmpeg openwrt/feeds/packages/multimedia/ffmpeg
         rm openwrt/feeds/packages/multimedia/ffmpeg/Makefile
@@ -142,7 +142,7 @@ jobs:
         sed -i '/read-only;/d' openwrt/target/linux/ramips/dts/mt7621_xiaomi_mi-router-3g.dts
         #sed -i 's/depends Include/depends on/g' openwrt/package/lean/luci-app-ssr-plus/Makefile
         cp ./ariang_Makefile openwrt/feeds/packages/net/ariang/Makefile
-        cp -R ./luci-app-aria2 openwrt/feeds/luci/applications/
+        #cp -R ./luci-app-aria2 openwrt/feeds/luci/applications/
         cp -R ./luci-lib-ipkg openwrt/feeds/luci/libs
 
     - name: Load custom configuration
