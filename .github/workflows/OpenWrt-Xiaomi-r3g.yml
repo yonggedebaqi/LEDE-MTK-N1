@@ -93,10 +93,12 @@ jobs:
         rm openwrt/feeds/packages/multimedia/youtube-dl/Makefile
         #rm openwrt/feeds/packages/net/ariang/Makefile
         #rm -rf openwrt/feeds/luci/applications/luci-app-aria2
+        rm -rf openwrt/target/linux/ramips
 
     - name: copy move file
       run: |
         #cp ./mac80211.sh openwrt/package/kernel/mac80211/files/lib/wifi
+        cp -R ./ramips openwrt/target/linux/
         cp ./profile openwrt/package/base-files/files/etc
         cp ./shadow openwrt/package/base-files/files/etc
         cp -R ./curl openwrt/package/network/utils/
