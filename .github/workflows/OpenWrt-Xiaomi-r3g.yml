@@ -79,17 +79,8 @@ jobs:
     - name: Install SSRPRO
       run: cd openwrt && git clone https://github.com/fw876/helloworld
 
-    - name: Install ddnsto
-      run: cd openwrt && git clone https://github.com/linkease/ddnsto-openwrt.git
-
     - name: Install p7zip
       run: cd openwrt && git clone https://github.com/hubutui/p7zip-lede.git package/p7zip
-
-    - name: Install tencentcloud
-      run: cd openwrt && git clone https://github.com/Tencent-Cloud-Plugins/tencentcloud-openwrt-plugin-ddns.git
-
-    - name: Install luci-app-adguardhome
-      run: cd openwrt/package/lean/ && git clone https://github.com/rufengsuixing/luci-app-adguardhome.git && rm -rf .git  .github .gitattributes .gitignore README.md
 
     - name: delete file
       run: |
