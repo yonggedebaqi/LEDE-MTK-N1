@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build OpenWrt-Xiaomi-r3g
+name: Build OpenWrt-Xiaomi-r3gv2
 
 on:
   repository_dispatch:
@@ -123,19 +123,19 @@ jobs:
         sed -i 's#Material Theme#Material Theme (default)#g' openwrt/feeds/luci.index
         sed -i 's#bootstrap#material#g' openwrt/feeds/luci/modules/luci-base/root/etc/config/luci
         sed -i 's#+luci-theme-bootstrap#+luci-theme-material#g' openwrt/feeds/luci.index
-        sed -i 's#Bootstrap#Material#g' openwrt/feeds/luci/collections/luci-nginx/Makefile
-        sed -i 's#bootstrap#material#g' openwrt/feeds/luci/collections/luci-nginx/Makefile
-        sed -i 's#bootstrap#material#g' openwrt/feeds/luci/collections/luci-ssl-nginx/Makefile
-        sed -i 's/Bootstrap/Material/g' openwrt/feeds/luci/collections/luci/Makefile
-        sed -i 's/12345678/sammi100200/g' openwrt/package/lean/mt/luci-app-mtwifi/luasrc/controller/mtkwifi.lua
-        sed -i '/read-only;/d' openwrt/target/linux/ramips/dts/mt7621_xiaomi_mi-router-3g.dts
-        sed -i '#sysupgrade.bin#sysupgrade.tar#d' openwrt/target/linux/ramips/image/Makefile
-        sed -i '#sysupgrade.bin#sysupgrade.tar#d' openwrt/target/linux/ramips/image/mt7621.mk
-        sed -i '#read-only;#d' openwrt/target/linux/ramips/dts/mt7620a_youku_yk-l1.dtsi
-        sed -i '#read-only;#d' openwrt/target/linux/ramips/dts/mt7620a_xiaomi_miwifi-mini.dts
-        sed -i '#read-only;#d' openwrt/target/linux/ramips/dts/mt7620a_xiaomi_miwifi-r3.dts
-        sed -i '#read-only;#d' openwrt/target/linux/ramips/dts/mt7621_xiaomi_nand_128m.dtsi
-        sed -i '#read-only;#d' openwrt/target/linux/ramips/dts/mt7621_d-team_newifi-d2.dts
+        sed -i 's#Bootstrap#Material#g' ./openwrt/feeds/luci/collections/luci-nginx/Makefile
+        sed -i 's#bootstrap#material#g' ./openwrt/feeds/luci/collections/luci-nginx/Makefile
+        sed -i 's#bootstrap#material#g' ./openwrt/feeds/luci/collections/luci-ssl-nginx/Makefile
+        sed -i 's/Bootstrap/Material/g' ./openwrt/feeds/luci/collections/luci/Makefile
+        sed -i 's/12345678/sammi100200/g' ./openwrt/package/lean/mt/luci-app-mtwifi/luasrc/controller/mtkwifi.lua
+        sed -i '/read-only;/d' ./openwrt/target/linux/ramips/dts/mt7621_xiaomi_mi-router-3g.dts
+        sed -i '#sysupgrade.bin#sysupgrade.tar#d' ./openwrt/target/linux/ramips/image/Makefile
+        sed -i '#sysupgrade.bin#sysupgrade.tar#d' ./openwrt/target/linux/ramips/image/mt7621.mk
+        sed -i '#read-only;#d' ./openwrt/target/linux/ramips/dts/mt7620a_youku_yk-l1.dtsi
+        sed -i '#read-only;#d' ./openwrt/target/linux/ramips/dts/mt7620a_xiaomi_miwifi-mini.dts
+        sed -i '#read-only;#d' ./openwrt/target/linux/ramips/dts/mt7620a_xiaomi_miwifi-r3.dts
+        sed -i '#read-only;#d' ./openwrt/target/linux/ramips/dts/mt7621_xiaomi_nand_128m.dtsi
+        sed -i '#read-only;#d' ./openwrt/target/linux/ramips/dts/mt7621_d-team_newifi-d2.dts
     - name: Load custom configuration
       run: |
         [ -e files ] && mv files openwrt/files
