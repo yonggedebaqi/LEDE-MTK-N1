@@ -122,8 +122,8 @@ jobs:
         sed -i 's/Bootstrap/Material/g' /openwrt/feeds/luci/collections/luci/Makefile
         sed -i 's/12345678/sammi100200/g' /openwrt/package/lean/mt/luci-app-mtwifi/luasrc/controller/mtkwifi.lua
         sed -i '/read-only;/d' /openwrt/target/linux/ramips/dts/mt7621_xiaomi_mi-router-3g.dts
-        sed -i '#sysupgrade.bin#sysupgrade.tar#d' /openwrt/target/linux/ramips/image/Makefile
-        sed -i '#sysupgrade.bin#sysupgrade.tar#d' /openwrt/target/linux/ramips/image/mt7621.mk
+        sed -i '#sysupgrade.bin#sysupgrade.tar#g' /openwrt/target/linux/ramips/image/Makefile
+        sed -i '#sysupgrade.bin#sysupgrade.tar#g' /openwrt/target/linux/ramips/image/mt7621.mk
         sed -i '#read-only;#d' /openwrt/target/linux/ramips/dts/mt7620a_youku_yk-l1.dtsi
         sed -i '#read-only;#d' /openwrt/target/linux/ramips/dts/mt7620a_xiaomi_miwifi-mini.dts
         sed -i '#read-only;#d' /openwrt/target/linux/ramips/dts/mt7620a_xiaomi_miwifi-r3.dts
@@ -180,7 +180,7 @@ jobs:
       id: organize
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
       run: |
-        cd openwrt/bin/targets/*/*
+        cd openwrt/bin/targets/*
         rm -rf packages
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "::set-output name=status::success"
