@@ -86,8 +86,10 @@ jobs:
         rm openwrt/package/base-files/files/etc/profile
         rm openwrt/package/base-files/files/etc/shadow
         rm -rf openwrt/package/network/utils/curl
+        rm -rf oopenwrt/feeds/packages/net/wget
         rm -rf openwrt/feeds/packages/multimedia/ffmpeg
         rm openwrt/feeds/packages/multimedia/youtube-dl/Makefile
+        rm -rf openwrt/feeds/packages/net/zerotier
 
     - name: copy move file
       run: |
@@ -95,7 +97,9 @@ jobs:
         cp ./profile openwrt/package/base-files/files/etc
         cp ./shadow openwrt/package/base-files/files/etc
         cp -R ./curl openwrt/package/network/utils/
+        cp ./wget openwrt/feeds/packages/net/
         #cp -R ./oscam openwrt/package/lean/
+        cp -R ./zerotier openwrt/feeds/packages/net/
         cp -R ./openwrt/helloworld/luci-app-ssr-plus openwrt/package/lean/
         cp -R ./openwrt/helloworld/naiveproxy openwrt/package/lean/
         cp -R ./openwrt/helloworld/shadowsocksr-libev openwrt/package/lean/
