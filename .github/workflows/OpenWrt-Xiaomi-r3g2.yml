@@ -82,22 +82,24 @@ jobs:
 
     - name: delete file
       run: |
-        #rm openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh
+        rm openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh
         rm openwrt/package/base-files/files/etc/profile
         rm openwrt/package/base-files/files/etc/shadow
-        #rm openwrt/package/libs/libiconv-full/patches/100-strip_charsets.patch
         rm -rf openwrt/package/network/utils/curl
+        rm -rf openwrt/feeds/packages/net/wget/
         rm -rf openwrt/feeds/packages/multimedia/ffmpeg
         rm openwrt/feeds/packages/multimedia/youtube-dl/Makefile
-        #rm openwrt/feeds/packages/net/ariang/Makefile
-        #rm -rf openwrt/feeds/luci/applications/luci-app-aria2
+        rm -rf openwrt/feeds/packages/net/zerotier
+
     - name: copy move file
       run: |
-        #cp ./mac80211.sh openwrt/package/kernel/mac80211/files/lib/wifi
+        cp ./mac80211.sh openwrt/package/kernel/mac80211/files/lib/wifi
         cp ./profile openwrt/package/base-files/files/etc
         cp ./shadow openwrt/package/base-files/files/etc
         cp -R ./curl openwrt/package/network/utils/
+        cp ./wget openwrt/feeds/packages/net/
         #cp -R ./oscam openwrt/package/lean/
+        cp -R ./zerotier openwrt/feeds/packages/net/
         cp -R ./openwrt/helloworld/luci-app-ssr-plus openwrt/package/lean/
         cp -R ./openwrt/helloworld/naiveproxy openwrt/package/lean/
         cp -R ./openwrt/helloworld/shadowsocksr-libev openwrt/package/lean/
@@ -130,13 +132,14 @@ jobs:
         sed -i 's/Bootstrap/Material/g' ./openwrt/feeds/luci/collections/luci/Makefile
         sed -i 's/12345678/sammi100200/g' ./openwrt/package/lean/mt/luci-app-mtwifi/luasrc/controller/mtkwifi.lua
         sed -i '/read-only;/d' ./openwrt/target/linux/ramips/dts/mt7621_xiaomi_mi-router-3g.dts
-        sed -i '#sysupgrade.bin#sysupgrade.tar#d' ./openwrt/target/linux/ramips/image/Makefile
-        sed -i '#sysupgrade.bin#sysupgrade.tar#d' ./openwrt/target/linux/ramips/image/mt7621.mk
+        sed -i '#sysupgrade.bin#sysupgrade.tar#g' ./openwrt/target/linux/ramips/image/Makefile
+        sed -i '#sysupgrade.bin#sysupgrade.tar#g' ./openwrt/target/linux/ramips/image/mt7621.mk
         sed -i '#read-only;#d' ./openwrt/target/linux/ramips/dts/mt7620a_youku_yk-l1.dtsi
         sed -i '#read-only;#d' ./openwrt/target/linux/ramips/dts/mt7620a_xiaomi_miwifi-mini.dts
         sed -i '#read-only;#d' ./openwrt/target/linux/ramips/dts/mt7620a_xiaomi_miwifi-r3.dts
         sed -i '#read-only;#d' ./openwrt/target/linux/ramips/dts/mt7621_xiaomi_nand_128m.dtsi
         sed -i '#read-only;#d' ./openwrt/target/linux/ramips/dts/mt7621_d-team_newifi-d2.dts
+
     - name: Load custom configuration
       run: |
         [ -e files ] && mv files openwrt/files
@@ -144,6 +147,7 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
+
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
       if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
