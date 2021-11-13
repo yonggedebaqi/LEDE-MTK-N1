@@ -56,12 +56,14 @@ jobs:
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
+
     - name: Clone source code
       working-directory: /workdir
       run: |
         df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+
     - name: Load custom feeds
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
@@ -81,20 +83,13 @@ jobs:
     - name: Install p7zip
       run: cd openwrt && git clone https://github.com/hubutui/p7zip-lede.git package/p7zip
 
-    - name: delete file
+    - name: copy move file
       run: |
-        #rm openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh
         rm openwrt/package/base-files/files/etc/profile
         rm openwrt/package/base-files/files/etc/shadow
-        #rm openwrt/package/libs/libiconv-full/patches/100-strip_charsets.patch
         rm -rf openwrt/package/network/utils/curl
         rm -rf openwrt/feeds/packages/multimedia/ffmpeg
         rm openwrt/feeds/packages/multimedia/youtube-dl/Makefile
-        #rm openwrt/feeds/packages/net/ariang/Makefile
-        #rm -rf openwrt/feeds/luci/applications/luci-app-aria2
-    - name: copy move file
-      run: |
-        #cp ./mac80211.sh openwrt/package/kernel/mac80211/files/lib/wifi
         cp ./profile openwrt/package/base-files/files/etc
         cp ./shadow openwrt/package/base-files/files/etc
         cp -R ./curl openwrt/package/network/utils/
@@ -113,14 +108,12 @@ jobs:
         cp -R ./libx265  openwrt/package/libs/
         rm -rf ./openwrt/helloworld
         cp -R ./ffmpeg openwrt/feeds/packages/multimedia/ffmpeg
-        rm openwrt/feeds/packages/multimedia/ffmpeg/Makefile
+        rm ./openwrt/feeds/packages/multimedia/ffmpeg/Makefile
         cp ./405_ffmpeg openwrt/feeds/packages/multimedia/ffmpeg/Makefile
         cp ./youtube_Makefile openwrt/feeds/packages/multimedia/youtube-dl/Makefile
         sed -i 's/bootstrap/material/g' openwrt/feeds/luci/collections/luci/Makefile
         sed -i 's# (default)##g' openwrt/feeds/luci/themes/luci-theme-bootstrap/Makefile
         sed -i 's#Material Theme#Material Theme (default)#g' openwrt/feeds/luci/themes/luci-theme-material/Makefile
-        #sed -i 's#PKG_VERSION:=4.4#PKG_VERSION:=4.0#g' openwrt/feeds/packages/multimedia/ffmpeg/Makefile
-        #sed -i 's#06b10a183ce5371f915c6bb15b7b1fffbe046e8275099c96affc29e17645d909#ed945daf40b124e77a685893cc025d086f638bc703183460aff49508edb3a43f#g' openwrt/feeds/packages/multimedia/ffmpeg/Makefile
         sed -i 's#Bootstrap Theme (default)#Bootstrap#g' openwrt/feeds/luci.index
         sed -i 's#Material Theme#Material Theme (default)#g' openwrt/feeds/luci.index
         sed -i 's#bootstrap#material#g' openwrt/feeds/luci/modules/luci-base/root/etc/config/luci
@@ -138,6 +131,7 @@ jobs:
         sed -i '#read-only;#d' ./openwrt/target/linux/ramips/dts/mt7620a_xiaomi_miwifi-r3.dts
         sed -i '#read-only;#d' ./openwrt/target/linux/ramips/dts/mt7621_xiaomi_nand_128m.dtsi
         sed -i '#read-only;#d' ./openwrt/target/linux/ramips/dts/mt7621_d-team_newifi-d2.dts
+
     - name: Load custom configuration
       run: |
         [ -e files ] && mv files openwrt/files
@@ -145,6 +139,7 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
+
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
       if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
@@ -171,6 +166,7 @@ jobs:
         grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
         [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
         echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
+
     - name: Check space usage
       if: (!cancelled())
       run: df -hT
@@ -190,6 +186,7 @@ jobs:
         rm -rf packages
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "::set-output name=status::success"
+
     - name: Upload firmware directory
       uses: actions/upload-artifact@main
       if: steps.organize.outputs.status == 'success' && !cancelled()
@@ -206,6 +203,7 @@ jobs:
         [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
         [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
         echo "::set-output name=status::success"
+
     - name: Upload firmware to release
       uses: softprops/action-gh-release@v1
       if: steps.tag.outputs.status == 'success' && !cancelled()
