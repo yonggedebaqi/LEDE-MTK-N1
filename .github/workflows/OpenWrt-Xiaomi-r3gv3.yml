@@ -85,52 +85,50 @@ jobs:
 
     - name: copy move file
       run: |
-        rm openwrt/package/base-files/files/etc/profile
-        rm openwrt/package/base-files/files/etc/shadow
-        rm -rf openwrt/package/network/utils/curl
-        rm -rf openwrt/feeds/packages/multimedia/ffmpeg
-        rm openwrt/feeds/packages/multimedia/youtube-dl/Makefile
-        cp ./profile openwrt/package/base-files/files/etc
-        cp ./shadow openwrt/package/base-files/files/etc
-        cp -R ./curl openwrt/package/network/utils/
-        #cp -R ./oscam openwrt/package/lean/
-        cp -R ./openwrt/helloworld/luci-app-ssr-plus openwrt/package/lean/
-        cp -R ./openwrt/helloworld/naiveproxy openwrt/package/lean/
-        cp -R ./openwrt/helloworld/shadowsocksr-libev openwrt/package/lean/
-        cp -R ./openwrt/helloworld/shadowsocks-rust openwrt/package/lean/
-        cp -R ./openwrt/helloworld/simple-obfs openwrt/package/lean/
-        cp -R ./openwrt/helloworld/tcping openwrt/package/lean/
-        cp -R ./openwrt/helloworld/trojan openwrt/package/lean/
-        cp -R ./openwrt/helloworld/v2ray-core openwrt/package/lean/
-        cp -R ./openwrt/helloworld/v2ray-plugin openwrt/package/lean/
-        cp -R ./openwrt/helloworld/xray-core openwrt/package/lean/
-        cp -R ./openwrt/helloworld/xray-plugin openwrt/package/lean/
-        cp -R ./libx265  openwrt/package/libs/
-        rm -rf ./openwrt/helloworld
-        cp -R ./ffmpeg openwrt/feeds/packages/multimedia/ffmpeg
-        rm ./openwrt/feeds/packages/multimedia/ffmpeg/Makefile
-        cp ./405_ffmpeg openwrt/feeds/packages/multimedia/ffmpeg/Makefile
-        cp ./youtube_Makefile openwrt/feeds/packages/multimedia/youtube-dl/Makefile
-        sed -i 's/bootstrap/material/g' openwrt/feeds/luci/collections/luci/Makefile
-        sed -i 's# (default)##g' openwrt/feeds/luci/themes/luci-theme-bootstrap/Makefile
-        sed -i 's#Material Theme#Material Theme (default)#g' openwrt/feeds/luci/themes/luci-theme-material/Makefile
-        sed -i 's#Bootstrap Theme (default)#Bootstrap#g' openwrt/feeds/luci.index
-        sed -i 's#Material Theme#Material Theme (default)#g' openwrt/feeds/luci.index
-        sed -i 's#bootstrap#material#g' openwrt/feeds/luci/modules/luci-base/root/etc/config/luci
-        sed -i 's#+luci-theme-bootstrap#+luci-theme-material#g' openwrt/feeds/luci.index
-        sed -i 's#Bootstrap#Material#g' ./openwrt/feeds/luci/collections/luci-nginx/Makefile
-        sed -i 's#bootstrap#material#g' ./openwrt/feeds/luci/collections/luci-nginx/Makefile
-        sed -i 's#bootstrap#material#g' ./openwrt/feeds/luci/collections/luci-ssl-nginx/Makefile
-        sed -i 's/Bootstrap/Material/g' ./openwrt/feeds/luci/collections/luci/Makefile
-        sed -i 's/12345678/sammi100200/g' ./openwrt/package/lean/mt/luci-app-mtwifi/luasrc/controller/mtkwifi.lua
-        sed -i '/read-only;/d' ./openwrt/target/linux/ramips/dts/mt7621_xiaomi_mi-router-3g.dts
-        sed -i '#sysupgrade.bin#sysupgrade.tar#d' ./openwrt/target/linux/ramips/image/Makefile
-        sed -i '#sysupgrade.bin#sysupgrade.tar#d' ./openwrt/target/linux/ramips/image/mt7621.mk
-        sed -i '#read-only;#d' ./openwrt/target/linux/ramips/dts/mt7620a_youku_yk-l1.dtsi
-        sed -i '#read-only;#d' ./openwrt/target/linux/ramips/dts/mt7620a_xiaomi_miwifi-mini.dts
-        sed -i '#read-only;#d' ./openwrt/target/linux/ramips/dts/mt7620a_xiaomi_miwifi-r3.dts
-        sed -i '#read-only;#d' ./openwrt/target/linux/ramips/dts/mt7621_xiaomi_nand_128m.dtsi
-        sed -i '#read-only;#d' ./openwrt/target/linux/ramips/dts/mt7621_d-team_newifi-d2.dts
+        rm /openwrt/package/base-files/files/etc/profile
+        rm /openwrt/package/base-files/files/etc/shadow
+        rm -rf /openwrt/package/network/utils/curl
+        rm -rf /openwrt/feeds/packages/multimedia/ffmpeg
+        rm /openwrt/feeds/packages/multimedia/youtube-dl/Makefile
+        cp ./profile /openwrt/package/base-files/files/etc
+        cp ./shadow /openwrt/package/base-files/files/etc
+        cp -R ./curl /openwrt/package/network/utils/
+        cp -R ./openwrt/helloworld/luci-app-ssr-plus /openwrt/package/lean/
+        cp -R ./openwrt/helloworld/naiveproxy /openwrt/package/lean/
+        cp -R ./openwrt/helloworld/shadowsocksr-libev /openwrt/package/lean/
+        cp -R ./openwrt/helloworld/shadowsocks-rust /openwrt/package/lean/
+        cp -R ./openwrt/helloworld/simple-obfs /openwrt/package/lean/
+        cp -R ./openwrt/helloworld/tcping /openwrt/package/lean/
+        cp -R ./openwrt/helloworld/trojan /openwrt/package/lean/
+        cp -R ./openwrt/helloworld/v2ray-core /openwrt/package/lean/
+        cp -R ./openwrt/helloworld/v2ray-plugin /openwrt/package/lean/
+        cp -R ./openwrt/helloworld/xray-core /openwrt/package/lean/
+        cp -R ./openwrt/helloworld/xray-plugin /openwrt/package/lean/
+        rm -rf /openwrt/helloworld
+        cp -R ./ffmpeg /openwrt/feeds/packages/multimedia/ffmpeg
+        rm /openwrt/feeds/packages/multimedia/ffmpeg/Makefile
+        cp ./405_ffmpeg /openwrt/feeds/packages/multimedia/ffmpeg/Makefile
+        cp ./youtube_Makefile /openwrt/feeds/packages/multimedia/youtube-dl/Makefile
+        sed -i 's/bootstrap/material/g' /openwrt/feeds/luci/collections/luci/Makefile
+        sed -i 's# (default)##g' /openwrt/feeds/luci/themes/luci-theme-bootstrap/Makefile
+        sed -i 's#Material Theme#Material Theme (default)#g' /openwrt/feeds/luci/themes/luci-theme-material/Makefile
+        sed -i 's#Bootstrap Theme (default)#Bootstrap#g' /openwrt/feeds/luci.index
+        sed -i 's#Material Theme#Material Theme (default)#g' /openwrt/feeds/luci.index
+        sed -i 's#bootstrap#material#g' /openwrt/feeds/luci/modules/luci-base/root/etc/config/luci
+        sed -i 's#+luci-theme-bootstrap#+luci-theme-material#g' /openwrt/feeds/luci.index
+        sed -i 's#Bootstrap#Material#g' /openwrt/feeds/luci/collections/luci-nginx/Makefile
+        sed -i 's#bootstrap#material#g' /openwrt/feeds/luci/collections/luci-nginx/Makefile
+        sed -i 's#bootstrap#material#g' /openwrt/feeds/luci/collections/luci-ssl-nginx/Makefile
+        sed -i 's/Bootstrap/Material/g' /openwrt/feeds/luci/collections/luci/Makefile
+        sed -i 's/12345678/sammi100200/g' /openwrt/package/lean/mt/luci-app-mtwifi/luasrc/controller/mtkwifi.lua
+        sed -i '/read-only;/d' /openwrt/target/linux/ramips/dts/mt7621_xiaomi_mi-router-3g.dts
+        sed -i '#sysupgrade.bin#sysupgrade.tar#d' /openwrt/target/linux/ramips/image/Makefile
+        sed -i '#sysupgrade.bin#sysupgrade.tar#d' /openwrt/target/linux/ramips/image/mt7621.mk
+        sed -i '#read-only;#d' /openwrt/target/linux/ramips/dts/mt7620a_youku_yk-l1.dtsi
+        sed -i '#read-only;#d' /openwrt/target/linux/ramips/dts/mt7620a_xiaomi_miwifi-mini.dts
+        sed -i '#read-only;#d' /openwrt/target/linux/ramips/dts/mt7620a_xiaomi_miwifi-r3.dts
+        sed -i '#read-only;#d' /openwrt/target/linux/ramips/dts/mt7621_xiaomi_nand_128m.dtsi
+        sed -i '#read-only;#d' /openwrt/target/linux/ramips/dts/mt7621_d-team_newifi-d2.dts
 
     - name: Load custom configuration
       run: |
