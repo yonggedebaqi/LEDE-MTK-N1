@@ -100,7 +100,7 @@ jobs:
         cp ./profile openwrt/package/base-files/files/etc
         cp ./shadow openwrt/package/base-files/files/etc
         cp -R ./curl openwrt/package/network/utils/
-        cp ./wget openwrt/feeds/packages/net/
+        cp -R ./wget openwrt/feeds/packages/net/
         #cp -R ./oscam openwrt/package/lean/
         cp -R ./zerotier openwrt/feeds/packages/net/
         cp -R ./openwrt/helloworld/luci-app-ssr-plus openwrt/package/lean/
