@@ -68,8 +68,6 @@ jobs:
         chmod +x $DIY_P1_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
-    - name: Update feeds
-      run: cd openwrt && ./scripts/feeds update -a
 
     - name: Install SSRPRO
       run: cd openwrt && git clone https://github.com/fw876/helloworld
@@ -82,7 +80,7 @@ jobs:
       
     - name: del mv file
       run: |
-        mv /lede/package/lean openwrt/package/
+        mv lede/package/lean openwrt/package/
         rm -rf lede/
         rm -rf openwrt/package/lean/autosamba
         rm -rf openwrt/package/lean/luci-app-music-remote-center
@@ -98,6 +96,9 @@ jobs:
         cp -R ./openwrt/helloworld/xray-core openwrt/package/lean/
         cp -R ./openwrt/helloworld/xray-plugin openwrt/package/lean/
         rm -rf ./openwrt/helloworld
+
+    - name: Update feeds
+      run: cd openwrt && ./scripts/feeds update -a
 
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
