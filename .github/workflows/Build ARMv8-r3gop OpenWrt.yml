@@ -81,7 +81,7 @@ jobs:
     - name: del mv file
       run: |
         mv ./openwrt/lede/package/lean openwrt/package/
-        rm -rf ./openwrt/lede/
+        rm -rf ./openwrt/lede
         rm -rf ./openwrt/package/lean/autosamba
         rm -rf ./openwrt/package/lean/luci-app-music-remote-center
         cp -R ./openwrt/helloworld/luci-app-ssr-plus ./openwrt/package/lean/
