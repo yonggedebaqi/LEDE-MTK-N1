@@ -71,9 +71,6 @@ jobs:
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
 
-    - name: Install feeds
-      run: cd openwrt && ./scripts/feeds install -a
-
     - name: Install SSRPRO
       run: cd openwrt && git clone https://github.com/fw876/helloworld
 
@@ -101,6 +98,9 @@ jobs:
         cp -R ./openwrt/helloworld/xray-core openwrt/package/lean/
         cp -R ./openwrt/helloworld/xray-plugin openwrt/package/lean/
         rm -rf ./openwrt/helloworld
+
+    - name: Install feeds
+      run: cd openwrt && ./scripts/feeds install -a
 
     - name: Load custom configuration
       run: |
