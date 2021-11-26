@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build ARMv8-x96 OpenWrt
+name: Build ARMv8-r3gop OpenWrt
 
 on:
   repository_dispatch:
