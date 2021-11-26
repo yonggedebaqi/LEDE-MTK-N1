@@ -80,21 +80,21 @@ jobs:
       
     - name: del mv file
       run: |
-        mv openwrt/lede/package/lean openwrt/package/
-        rm -rf openwrt/lede/
-        rm -rf openwrt/package/lean/autosamba
-        rm -rf openwrt/package/lean/luci-app-music-remote-center
-        cp -R ./openwrt/helloworld/luci-app-ssr-plus openwrt/package/lean/
-        cp -R ./openwrt/helloworld/naiveproxy openwrt/package/lean/
-        cp -R ./openwrt/helloworld/shadowsocksr-libev openwrt/package/lean/
-        cp -R ./openwrt/helloworld/shadowsocks-rust openwrt/package/lean/
-        cp -R ./openwrt/helloworld/simple-obfs openwrt/package/lean/
-        cp -R ./openwrt/helloworld/tcping openwrt/package/lean/
-        cp -R ./openwrt/helloworld/trojan openwrt/package/lean/
-        cp -R ./openwrt/helloworld/v2ray-core openwrt/package/lean/
-        cp -R ./openwrt/helloworld/v2ray-plugin openwrt/package/lean/
-        cp -R ./openwrt/helloworld/xray-core openwrt/package/lean/
-        cp -R ./openwrt/helloworld/xray-plugin openwrt/package/lean/
+        mv ./openwrt/lede/package/lean openwrt/package/
+        rm -rf ./openwrt/lede/
+        rm -rf ./openwrt/package/lean/autosamba
+        rm -rf ./openwrt/package/lean/luci-app-music-remote-center
+        cp -R ./openwrt/helloworld/luci-app-ssr-plus ./openwrt/package/lean/
+        cp -R ./openwrt/helloworld/naiveproxy ./openwrt/package/lean/
+        cp -R ./openwrt/helloworld/shadowsocksr-libev ./openwrt/package/lean/
+        cp -R ./openwrt/helloworld/shadowsocks-rust ./openwrt/package/lean/
+        cp -R ./openwrt/helloworld/simple-obfs ./openwrt/package/lean/
+        cp -R ./openwrt/helloworld/tcping ./openwrt/package/lean/
+        cp -R ./openwrt/helloworld/trojan ./openwrt/package/lean/
+        cp -R ./openwrt/helloworld/v2ray-core ./openwrt/package/lean/
+        cp -R ./openwrt/helloworld/v2ray-plugin ./openwrt/package/lean/
+        cp -R ./openwrt/helloworld/xray-core ./openwrt/package/lean/
+        cp -R ./openwrt/helloworld/xray-plugin ./openwrt/package/lean/
         rm -rf ./openwrt/helloworld
 
     - name: Update feeds
