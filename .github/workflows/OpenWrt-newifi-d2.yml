@@ -135,11 +135,11 @@ jobs:
         sed -i '/read-only;/d' ./openwrt/target/linux/ramips/dts/mt7621_xiaomi_mi-router-3g.dts
         sed -i '#sysupgrade.bin#sysupgrade.tar#g' ./openwrt/target/linux/ramips/image/Makefile
         sed -i '#sysupgrade.bin#sysupgrade.tar#g' ./openwrt/target/linux/ramips/image/mt7621.mk
-        sed -i '#read-only;#d' ./openwrt/target/linux/ramips/dts/mt7620a_youku_yk-l1.dtsi
-        sed -i '#read-only;#d' ./openwrt/target/linux/ramips/dts/mt7620a_xiaomi_miwifi-mini.dts
-        sed -i '#read-only;#d' ./openwrt/target/linux/ramips/dts/mt7620a_xiaomi_miwifi-r3.dts
-        sed -i '#read-only;#d' ./openwrt/target/linux/ramips/dts/mt7621_xiaomi_nand_128m.dtsi
-        sed -i '#read-only;#d' ./openwrt/target/linux/ramips/dts/mt7621_d-team_newifi-d2.dts
+        sed -i '/read-only\;/d' ./openwrt/target/linux/ramips/dts/mt7620a_youku_yk-l1.dtsi
+        sed -i '/read-only\;/d' ./openwrt/target/linux/ramips/dts/mt7620a_xiaomi_miwifi-mini.dts
+        sed -i '/read-only\;/d' ./openwrt/target/linux/ramips/dts/mt7620a_xiaomi_miwifi-r3.dts
+        sed -i '/read-only\;/d' ./openwrt/target/linux/ramips/dts/mt7621_xiaomi_nand_128m.dtsi
+        sed -i '/read-only\;/d' ./openwrt/target/linux/ramips/dts/mt7621_d-team_newifi-d2.dts
 
     - name: Load custom configuration
       run: |
