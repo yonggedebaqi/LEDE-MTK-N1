@@ -18,12 +18,6 @@ CMAKE_INSTALL:=1
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
 
-CMAKE_BINARY_DIR:=$(PKG_BUILD_DIR)/build
-CMAKE_SOURCE_DIR:=$(PKG_BUILD_DIR)/source
-MAKE_PATH:=build
-TARGET_CFLAGS+= -fPIC
-TARGET_CXXFLAGS+= -fPIC
-
 define Package/libx265
   SECTION:=libs
   CATEGORY:=Libraries
