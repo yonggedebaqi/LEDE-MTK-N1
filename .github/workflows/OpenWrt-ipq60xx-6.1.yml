@@ -120,6 +120,9 @@ jobs:
         cd $OPENWRT_PATH
         mkdir -p files/etc/uci-defaults
         cp -R ./libx265  package/libs/
+        cp -R ./ffmpeg feeds/packages/multimedia/ffmpeg
+        rm feeds/packages/multimedia/ffmpeg/Makefile
+        cp ./405_ffmpeg feeds/packages/multimedia/ffmpeg/Makefile
         cp $GITHUB_WORKSPACE/scripts/init-settings.sh files/etc/uci-defaults/99-init-settings
         echo -e "$(nproc) thread compile"
         make -j$(nproc) || make -j1 || make -j1 V=s
