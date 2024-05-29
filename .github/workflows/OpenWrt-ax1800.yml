@@ -72,45 +72,24 @@ jobs:
 
 
     - name: Install SSRPRO
-      run: cd openwrt && git clone https://github.com/fw876/helloworld
+      run: cd openwrt/packages && git clone https://github.com/fw876/helloworld
 
     - name: delete file
       run: |
         rm openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh
         rm openwrt/package/base-files/files/etc/profile
         rm openwrt/package/base-files/files/etc/shadow
-        rm -rf openwrt/package/network/utils/curl
-        rm -rf openwrt/feeds/packages/net/wget/
         rm -rf openwrt/feeds/packages/multimedia/ffmpeg
-        rm openwrt/feeds/packages/multimedia/youtube-dl/Makefile
-        rm -rf openwrt/feeds/packages/net/zerotier
 
     - name: copy move file
       run: |
         cp ./mac80211.sh openwrt/package/kernel/mac80211/files/lib/wifi
         cp ./profile openwrt/package/base-files/files/etc
         cp ./shadow openwrt/package/base-files/files/etc
-        cp -R ./curl openwrt/package/network/utils/
-        cp ./wget openwrt/feeds/packages/net/
-        #cp -R ./oscam openwrt/package/lean/
-        cp -R ./zerotier openwrt/feeds/packages/net/
-        cp -R ./openwrt/helloworld/luci-app-ssr-plus openwrt/package/lean/
-        cp -R ./openwrt/helloworld/naiveproxy openwrt/package/lean/
-        cp -R ./openwrt/helloworld/shadowsocksr-libev openwrt/package/lean/
-        cp -R ./openwrt/helloworld/shadowsocks-rust openwrt/package/lean/
-        cp -R ./openwrt/helloworld/simple-obfs openwrt/package/lean/
-        cp -R ./openwrt/helloworld/tcping openwrt/package/lean/
-        cp -R ./openwrt/helloworld/trojan openwrt/package/lean/
-        cp -R ./openwrt/helloworld/v2ray-core openwrt/package/lean/
-        cp -R ./openwrt/helloworld/v2ray-plugin openwrt/package/lean/
-        cp -R ./openwrt/helloworld/xray-core openwrt/package/lean/
-        cp -R ./openwrt/helloworld/xray-plugin openwrt/package/lean/
         cp -R ./libx265  openwrt/package/libs/
-        rm -rf ./openwrt/helloworld
         cp -R ./ffmpeg openwrt/feeds/packages/multimedia/ffmpeg
         rm openwrt/feeds/packages/multimedia/ffmpeg/Makefile
         cp ./405_ffmpeg openwrt/feeds/packages/multimedia/ffmpeg/Makefile
-        cp ./youtube_Makefile openwrt/feeds/packages/multimedia/youtube-dl/Makefile
         sed -i 's/bootstrap/material/g' openwrt/feeds/luci/collections/luci/Makefile
         sed -i 's# (default)##g' openwrt/feeds/luci/themes/luci-theme-bootstrap/Makefile
         sed -i 's#Material Theme#Material Theme (default)#g' openwrt/feeds/luci/themes/luci-theme-material/Makefile
