@@ -14,7 +14,7 @@ env:
   REPO_URL: https://github.com/yonggedebaqi/lede_ax1800
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: configs/ax1800.config
+  CONFIG_FILE: ax1800.config
   SYS_CONF_SH: configure.sh
   PACKS: package.sh
   UPLOAD_BIN_DIR: false
