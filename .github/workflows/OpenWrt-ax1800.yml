@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build OpenWrt-Xiaomi-r3gv2
+name: Build OpenWrt-ax1800
 
 on:
   repository_dispatch:
@@ -25,7 +25,7 @@ on:
 #    types: started
 
 env:
-  REPO_URL: https://github.com/coolsnowwolf/lede
+  REPO_URL: https://github.com/yonggedebaqi/lede_ax1800
   REPO_BRANCH: master
   FEEDS_CONF: official.feeds.conf.default
   CONFIG_FILE: ax1800_config
