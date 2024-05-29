@@ -42,22 +42,12 @@ jobs:
         git clone -b ${{ inputs.branch_name }} ${{ inputs.rep_url }} ~/openwrt
         cd ~/openwrt
         ./scripts/feeds update -a && ./scripts/feeds install -a
+        cd package && git clone https://github.com/fw876/helloworld
         cp -rf $CRTDIR/${{ inputs.config_file }} ~/openwrt/.config
-        make defconfig
-        make -j$(expr $(nproc) + 1) V=s
-
-    - name: Install SSRPRO
-      run: cd openwrt/package && git clone https://github.com/fw876/helloworld
-
-    - name: delete file
-      run: |
         rm openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh
         rm openwrt/package/base-files/files/etc/profile
         rm openwrt/package/base-files/files/etc/shadow
         rm -rf openwrt/feeds/packages/multimedia/ffmpeg
-
-    - name: copy move file
-      run: |
         cp ./mac80211.sh openwrt/package/kernel/mac80211/files/lib/wifi
         cp ./profile openwrt/package/base-files/files/etc
         cp ./shadow openwrt/package/base-files/files/etc
@@ -78,6 +68,8 @@ jobs:
         sed -i 's#bootstrap#material#g' ./openwrt/feeds/luci/collections/luci-nginx/Makefile
         sed -i 's#bootstrap#material#g' ./openwrt/feeds/luci/collections/luci-ssl-nginx/Makefile
         sed -i 's/Bootstrap/Material/g' ./openwrt/feeds/luci/collections/luci/Makefile
+        make defconfig
+        make -j$(expr $(nproc) + 1) V=s
 
     - name: Organize files
       id: organize
