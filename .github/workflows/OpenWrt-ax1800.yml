@@ -72,7 +72,7 @@ jobs:
 
 
     - name: Install SSRPRO
-      run: cd openwrt/packages && git clone https://github.com/fw876/helloworld
+      run: cd openwrt/package && git clone https://github.com/fw876/helloworld
 
     - name: delete file
       run: |
