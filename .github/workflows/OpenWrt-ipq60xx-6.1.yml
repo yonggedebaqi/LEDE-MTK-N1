@@ -10,13 +10,10 @@ on:
       branch_name:
         description: '分支'     
         required: true
-        default: '360V6_nss2'
+        default: 'ipq60xx-6.1'
         type: choice
         options:
         - main
-        - ipq60xx-devel
-        - 360V6_nss2
-        - mt798x-devel
       config_file:
         description: '配置文件'     
         required: true
@@ -34,10 +31,6 @@ jobs:
       run: |
         sudo apt update
         sudo apt install build-essential libncurses5-dev gawk git libssl-dev gettext zlib1g-dev swig unzip time rsync python3 python3-setuptools python3-yaml -y
-        git config --global user.email "shi05275@163.com"
-        git config --global user.name "JiaY-shi"
-        git config --global credential.helper store
-        echo ${{ secrets.GIT_URL_TOKEN }} > ~/.git-credentials
         
         sudo apt autoclean
         sudo apt autoremove --purge
@@ -47,7 +40,6 @@ jobs:
       run: |
         CRTDIR=$(pwd)
         git clone -b ${{ inputs.branch_name }} ${{ inputs.rep_url }} ~/openwrt
-        cp -rf feeds.conf ~/openwrt
         cd ~/openwrt
         ./scripts/feeds update -a && ./scripts/feeds install -a
         cp -rf $CRTDIR/${{ inputs.config_file }} ~/openwrt/.config
