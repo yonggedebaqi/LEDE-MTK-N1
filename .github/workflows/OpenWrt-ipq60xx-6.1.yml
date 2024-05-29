@@ -20,16 +20,11 @@ on:
       config_file:
         description: '配置文件'     
         required: true
-        default: 'qihoo_v6.nss.config' 
+        default: 'ax1800_config' 
         type: choice
         options:
-        - gl-ax1800.config
-        - gl-ax1800.nss.config
-        - gl-axt1800.config
-        - gl-axt1800.nss.config
-        - gl-mt6000.config
         - ax1800_config
-        - qihoo_v6.nss.config
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -91,7 +86,6 @@ jobs:
         sed -i 's#bootstrap#material#g' ./openwrt/feeds/luci/collections/luci-nginx/Makefile
         sed -i 's#bootstrap#material#g' ./openwrt/feeds/luci/collections/luci-ssl-nginx/Makefile
         sed -i 's/Bootstrap/Material/g' ./openwrt/feeds/luci/collections/luci/Makefile
-
 
     - name: Organize files
       id: organize
