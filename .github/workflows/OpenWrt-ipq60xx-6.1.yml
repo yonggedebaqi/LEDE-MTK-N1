@@ -1,4 +1,4 @@
-name: build openwrt_V2
+name: build openwrt_ipq60xx-6.1
 
 on:
   workflow_dispatch:
