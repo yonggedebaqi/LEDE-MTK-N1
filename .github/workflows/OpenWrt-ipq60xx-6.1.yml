@@ -23,6 +23,10 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
+    - name: Show mac80211.sh Path
+      run: |
+        find . -name "mac80211.sh" -exec echo "Found: {}" \;
+      
     - name: Check Server Performance(检查服务器性能)
       run: |
         echo "警告⚠"
