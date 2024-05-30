@@ -93,11 +93,12 @@ jobs:
     - name: Install Feeds(安装feeds)
       run: |
         cd $OPENWRT_PATH
-        git clone https://github.com/sbwml/luci-app-daed package/daed
-        git clone https://github.com/sbwml/v2ray-geodata package/daed/v2ray-geodata
+        df -hT $PWD
+        git clone https://github.com/fw876/helloworld package
         sudo apt-get install -y clang-13
         ./scripts/feeds update -a
         ./scripts/feeds install -a
+        df -hT $PWD
         rm package/base-files/files/etc/profile
         rm package/base-files/files/etc/shadow
         rm feeds/packages/multimedia/ffmpeg/Makefile
