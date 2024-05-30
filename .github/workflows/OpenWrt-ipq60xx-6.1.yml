@@ -115,11 +115,7 @@ jobs:
       run: |
         [ -e files ] && mv files $OPENWRT_PATH/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRT_PATH/.config
-        rm /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/package/base-files/files/etc/profile
-        rm /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/package/base-files/files/etc/shadow
         rm /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/packages/multimedia/ffmpeg/Makefile
-        cp /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/profile /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/package/base-files/files/etc
-        cp /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/shadow /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrtt/package/base-files/files/etc
         cp -R /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/libx265 /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/package/libs/
         cp -R /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/ffmpeg4.4/Makefile /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/packages/multimedia/ffmpeg
         sed -i 's/bootstrap/material/g' /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/luci/collections/luci/Makefile
