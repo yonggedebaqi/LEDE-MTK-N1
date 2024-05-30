@@ -97,8 +97,7 @@ jobs:
     - name: Install Feeds(安装feeds)
       run: |
         cd $OPENWRT_PATH
-        echo "find . -name \"mac80211.sh\""
-        echo "OPENWRT_PATH=$PWD"
+        echo "OPENWRT_PATH=$OPENWRT_PATH"
         git clone https://github.com/fw876/helloworld package
         sudo apt-get install -y clang-13
         ./scripts/feeds update -a
