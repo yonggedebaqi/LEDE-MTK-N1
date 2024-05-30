@@ -103,14 +103,13 @@ jobs:
         sudo apt-get install -y clang-13
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-        echo "ls ../mac80211.sh"
         rm /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/package/base-files/files/etc/profile
         rm /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/package/base-files/files/etc/shadow
         rm /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/packages/multimedia/ffmpeg/Makefile
-        cp ../profile /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/package/base-files/files/etc
-        cp ../shadow /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/package/base-files/files/etc
-        cp -R ../libx265 openwrt/package/libs/
-        cp -R ../ffmpeg4.4/Makefile /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/packages/multimedia/ffmpeg
+        cp /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/profile /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/package/base-files/files/etc
+        cp /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/shadow /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/package/base-files/files/etc
+        cp -R /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/libx265 /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/package/libs/
+        cp -R /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/ffmpeg4.4/Makefile /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/packages/multimedia/ffmpeg
         sed -i 's/bootstrap/material/g' /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/luci/collections/luci/Makefile
         sed -i 's# (default)##g' /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt//feeds/luci/themes/luci-theme-bootstrap/Makefile
         sed -i 's#Material Theme#Material Theme (default)#g' /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/luci/themes/luci-theme-material/Makefile
