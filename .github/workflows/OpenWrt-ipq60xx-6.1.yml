@@ -127,7 +127,6 @@ jobs:
         sed -i 's#+luci-theme-bootstrap#+luci-theme-material#g' /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/luci.index
         sed -i 's#Bootstrap#Material#g' /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/luci/collections/luci-nginx/Makefile
         sed -i 's#bootstrap#material#g' /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/luci/collections/luci-nginx/Makefile
-        sed -i 's#bootstrap#material#g' /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/luci/collections/luci-ssl-nginx/Makefile
         sed -i 's/Bootstrap/Material/g' /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/luci/collections/luci/Makefile
 
     - name: Download DL Package(下载DL软件包)
