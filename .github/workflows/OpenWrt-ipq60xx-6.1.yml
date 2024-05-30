@@ -98,26 +98,26 @@ jobs:
         sudo apt-get install -y clang-13
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-        rm package/kernel/mac80211/files/lib/wifi/mac80211.sh
-        rm package/base-files/files/etc/profile
-        rm package/base-files/files/etc/shadow
-        rm feeds/packages/multimedia/ffmpeg/Makefile
-        cp ./mac80211.sh package/kernel/mac80211/files/lib/wifi
-        cp ./profile package/base-files/files/etc
-        cp ./shadow package/base-files/files/etc
-        cp -R ./libx265 package/libs/
-        cp -R ./ffmpeg4.4/Makefile feeds/packages/multimedia/ffmpeg
-        sed -i 's/bootstrap/material/g' feeds/luci/collections/luci/Makefile
-        sed -i 's# (default)##g' feeds/luci/themes/luci-theme-bootstrap/Makefile
-        sed -i 's#Material Theme#Material Theme (default)#g' feeds/luci/themes/luci-theme-material/Makefile
-        sed -i 's#Bootstrap Theme (default)#Bootstrap#g' feeds/luci.index
-        sed -i 's#Material Theme#Material Theme (default)#g' feeds/luci.index
-        sed -i 's#bootstrap#material#g' feeds/luci/modules/luci-base/root/etc/config/luci
+        rm openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh
+        rm openwrt/package/base-files/files/etc/profile
+        rm openwrt/package/base-files/files/etc/shadow
+        rm openwrt/feeds/packages/multimedia/ffmpeg/Makefile
+        cp ./mac80211.sh openwrt/package/kernel/mac80211/files/lib/wifi
+        cp ./profile openwrt/package/base-files/files/etc
+        cp ./shadow openwrt/package/base-files/files/etc
+        cp -R ./libx265 openwrt/package/libs/
+        cp -R ./ffmpeg4.4/Makefile openwrt/feeds/packages/multimedia/ffmpeg
+        sed -i 's/bootstrap/material/g' openwrt/feeds/luci/collections/luci/Makefile
+        sed -i 's# (default)##g' openwrt/feeds/luci/themes/luci-theme-bootstrap/Makefile
+        sed -i 's#Material Theme#Material Theme (default)#g' openwrt/feeds/luci/themes/luci-theme-material/Makefile
+        sed -i 's#Bootstrap Theme (default)#Bootstrap#g' openwrt/feeds/luci.index
+        sed -i 's#Material Theme#Material Theme (default)#g' openwrt/feeds/luci.index
+        sed -i 's#bootstrap#material#g' openwrt/feeds/luci/modules/luci-base/root/etc/config/luci
         sed -i 's#+luci-theme-bootstrap#+luci-theme-material#g' openwrt/feeds/luci.index
-        sed -i 's#Bootstrap#Material#g' feeds/luci/collections/luci-nginx/Makefile
-        sed -i 's#bootstrap#material#g' feeds/luci/collections/luci-nginx/Makefile
-        sed -i 's#bootstrap#material#g' feeds/luci/collections/luci-ssl-nginx/Makefile
-        sed -i 's/Bootstrap/Material/g' feeds/luci/collections/luci/Makefile
+        sed -i 's#Bootstrap#Material#g' openwrt/feeds/luci/collections/luci-nginx/Makefile
+        sed -i 's#bootstrap#material#g' openwrt/feeds/luci/collections/luci-nginx/Makefile
+        sed -i 's#bootstrap#material#g' openwrt/feeds/luci/collections/luci-ssl-nginx/Makefile
+        sed -i 's/Bootstrap/Material/g' openwrt/feeds/luci/collections/luci/Makefile
 
     - name: Apply patches(安装补丁)   
       run: |
