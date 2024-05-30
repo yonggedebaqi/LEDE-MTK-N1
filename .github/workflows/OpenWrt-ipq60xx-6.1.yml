@@ -99,7 +99,7 @@ jobs:
         sudo apt-get install -y clang-13
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-        echo "OPENWRT_PATH=$PWD"
+        echo "ls ../mac80211.sh"
         rm /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/package/base-files/files/etc/profile
         rm /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/package/base-files/files/etc/shadow
         rm /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/packages/multimedia/ffmpeg/Makefile
