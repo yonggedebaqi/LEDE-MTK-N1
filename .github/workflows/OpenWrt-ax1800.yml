@@ -79,7 +79,7 @@ jobs:
         rm openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh
         rm openwrt/package/base-files/files/etc/profile
         rm openwrt/package/base-files/files/etc/shadow
-        rm -rf openwrt/feeds/packages/multimedia/ffmpeg
+        rm openwrt/feeds/packages/multimedia/ffmpeg/Makefile
 
     - name: copy move file
       run: |
@@ -87,14 +87,10 @@ jobs:
         cp ./profile openwrt/package/base-files/files/etc
         cp ./shadow openwrt/package/base-files/files/etc
         cp -R ./libx265  openwrt/package/libs/
-        cp -R ./ffmpeg openwrt/feeds/packages/multimedia/ffmpeg
-        rm openwrt/feeds/packages/multimedia/ffmpeg/Makefile
-        cp ./405_ffmpeg openwrt/feeds/packages/multimedia/ffmpeg/Makefile
+        cp -R ./ffmpeg4.4/Makefile openwrt/feeds/packages/multimedia/ffmpeg
         sed -i 's/bootstrap/material/g' openwrt/feeds/luci/collections/luci/Makefile
         sed -i 's# (default)##g' openwrt/feeds/luci/themes/luci-theme-bootstrap/Makefile
         sed -i 's#Material Theme#Material Theme (default)#g' openwrt/feeds/luci/themes/luci-theme-material/Makefile
-        #sed -i 's#PKG_VERSION:=4.4#PKG_VERSION:=4.0#g' openwrt/feeds/packages/multimedia/ffmpeg/Makefile
-        #sed -i 's#06b10a183ce5371f915c6bb15b7b1fffbe046e8275099c96affc29e17645d909#ed945daf40b124e77a685893cc025d086f638bc703183460aff49508edb3a43f#g' openwrt/feeds/packages/multimedia/ffmpeg/Makefile
         sed -i 's#Bootstrap Theme (default)#Bootstrap#g' openwrt/feeds/luci.index
         sed -i 's#Material Theme#Material Theme (default)#g' openwrt/feeds/luci.index
         sed -i 's#bootstrap#material#g' openwrt/feeds/luci/modules/luci-base/root/etc/config/luci
