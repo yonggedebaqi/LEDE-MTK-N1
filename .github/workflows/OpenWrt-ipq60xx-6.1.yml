@@ -102,11 +102,18 @@ jobs:
         sudo apt-get install -y clang-13
         ./scripts/feeds update -a
         ./scripts/feeds install -a
+
+    - name: Apply patches(安装补丁)   
+      run: |
+        git config --global user.name "OpenWrt Builder"
+        git config --global user.email "buster-openwrt@ovvo.uk"
+        cp $PATCHES_FILE_1 $OPENWRT_PATH/feeds/luci
+        cd $OPENWRT_PATH/feeds/luci
         rm /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/package/base-files/files/etc/profile
         rm /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/package/base-files/files/etc/shadow
         rm /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/packages/multimedia/ffmpeg/Makefile
         cp /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/profile /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/package/base-files/files/etc
-        cp /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/shadow /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/package/base-files/files/etc
+        cp /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/shadow /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrtt/package/base-files/files/etc
         cp -R /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/libx265 /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/package/libs/
         cp -R /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/ffmpeg4.4/Makefile /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/packages/multimedia/ffmpeg
         sed -i 's/bootstrap/material/g' /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/luci/collections/luci/Makefile
@@ -120,13 +127,6 @@ jobs:
         sed -i 's#bootstrap#material#g' /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/luci/collections/luci-nginx/Makefile
         sed -i 's#bootstrap#material#g' /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/luci/collections/luci-ssl-nginx/Makefile
         sed -i 's/Bootstrap/Material/g' /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/luci/collections/luci/Makefile
-
-    - name: Apply patches(安装补丁)   
-      run: |
-        git config --global user.name "OpenWrt Builder"
-        git config --global user.email "buster-openwrt@ovvo.uk"
-        cp $PATCHES_FILE_1 $OPENWRT_PATH/feeds/luci
-        cd $OPENWRT_PATH/feeds/luci
         git am 0001-show-soc-status-on-luci.patch
   
     - name: Load Custom Configuration(加载自定义配置)
