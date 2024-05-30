@@ -93,12 +93,12 @@ jobs:
     - name: Install Feeds(安装feeds)
       run: |
         cd $OPENWRT_PATH
-        df -hT $PWD
+        echo "OPENWRT_PATH=$PWD"
         git clone https://github.com/fw876/helloworld package
         sudo apt-get install -y clang-13
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-        df -hT $PWD
+        echo "OPENWRT_PATH=$PWD"
         rm package/base-files/files/etc/profile
         rm package/base-files/files/etc/shadow
         rm feeds/packages/multimedia/ffmpeg/Makefile
