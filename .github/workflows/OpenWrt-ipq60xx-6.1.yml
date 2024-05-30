@@ -23,9 +23,9 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-    - name: Show mac80211.sh Path
+    - name: Show CONFIG_FILE Path
       run: |
-        find . -name "mac80211.sh" -exec echo "Found: {}" \; >&1
+        echo "CONFIG_FILE Path: ${{ github.workspace }}/${{ env.CONFIG_FILE }}"
       
     - name: Check Server Performance(检查服务器性能)
       run: |
