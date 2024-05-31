@@ -117,21 +117,21 @@ jobs:
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x $DIY_P2_SH
-         mkdir -p ${{ github.workspace }}/openwrt/package/libs/libpcre
-        cp ../../Makefile  ${{ github.workspace }}/${{ env.CONFIG_FILE }}/openwrt/package/libs/libpcre
-        rm ${{ github.workspace }}/${{ env.CONFIG_FILE }}/openwrt/feeds/packages/multimedia/ffmpeg
-        cp -R ../../ffmpeg ${{ github.workspace }}/${{ env.CONFIG_FILE }}/openwrt/feeds/packages/multimedia/
-        cp -R ../../libx265 ${{ github.workspace }}/${{ env.CONFIG_FILE }}/openwrt/package/libs/
-        sed -i 's/bootstrap/material/g' ${{ github.workspace }}/${{ env.CONFIG_FILE }}/openwrt/feeds/luci/collections/luci/Makefile
-        sed -i 's# (default)##g' ${{ github.workspace }}/${{ env.CONFIG_FILE }}/openwrt//feeds/luci/themes/luci-theme-bootstrap/Makefile
-        sed -i 's#Material Theme#Material Theme (default)#g' ${{ github.workspace }}/${{ env.CONFIG_FILE }}/openwrt/feeds/luci/themes/luci-theme-material/Makefile
-        sed -i 's#Bootstrap Theme (default)#Bootstrap#g' ${{ github.workspace }}/${{ env.CONFIG_FILE }}/openwrt/feeds/luci.index
-        sed -i 's#Material Theme#Material Theme (default)#g' ${{ github.workspace }}/${{ env.CONFIG_FILE }}/openwrt/feeds/luci.index
-        sed -i 's#bootstrap#material#g' ${{ github.workspace }}/${{ env.CONFIG_FILE }}/openwrt/feeds/luci/modules/luci-base/root/etc/config/luci
-        sed -i 's#+luci-theme-bootstrap#+luci-theme-material#g' ${{ github.workspace }}/${{ env.CONFIG_FILE }}/openwrt/feeds/luci.index
-        sed -i 's#Bootstrap#Material#g' ${{ github.workspace }}/${{ env.CONFIG_FILE }}}/openwrt/feeds/luci/collections/luci-nginx/Makefile
-        sed -i 's#bootstrap#material#g' ${{ github.workspace }}/${{ env.CONFIG_FILE }}/openwrt/feeds/luci/collections/luci-nginx/Makefile
-        sed -i 's/Bootstrap/Material/g' ${{ github.workspace }}/${{ env.CONFIG_FILE }}/openwrt/feeds/luci/collections/luci/Makefile
+        mkdir -p /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/package/libs/libpcre
+        cp /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/Makefile /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/package/libs/libpcre
+        rm /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/packages/multimedia/ffmpeg
+        cp -R /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/ffmpeg /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/packages/multimedia/
+        cp -R /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/libx265 /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/package/libs/
+        sed -i 's/bootstrap/material/g' /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/luci/collections/luci/Makefile
+        sed -i 's# (default)##g' /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt//feeds/luci/themes/luci-theme-bootstrap/Makefile
+        sed -i 's#Material Theme#Material Theme (default)#g' /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/luci/themes/luci-theme-material/Makefile
+        sed -i 's#Bootstrap Theme (default)#Bootstrap#g' /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/luci.index
+        sed -i 's#Material Theme#Material Theme (default)#g' /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/luci.index
+        sed -i 's#bootstrap#material#g' /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/luci/modules/luci-base/root/etc/config/luci
+        sed -i 's#+luci-theme-bootstrap#+luci-theme-material#g' /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/luci.index
+        sed -i 's#Bootstrap#Material#g' /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/luci/collections/luci-nginx/Makefile
+        sed -i 's#bootstrap#material#g' /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/luci/collections/luci-nginx/Makefile
+        sed -i 's/Bootstrap/Material/g' /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/luci/collections/luci/Makefile
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
         
