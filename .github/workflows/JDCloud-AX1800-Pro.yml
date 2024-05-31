@@ -123,7 +123,7 @@ jobs:
         chmod +x $DIY_P2_SH
         mkdir -p /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/package/libs/libpcre
         cp /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/Makefile /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/package/libs/libpcre
-        rm /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/packages/multimedia/ffmpeg
+        rm -rf /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/packages/multimedia/ffmpeg
         cp -R /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/ffmpeg /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/packages/multimedia/
         cp -R /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/libx265 /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/package/libs/
         sed -i 's/bootstrap/material/g' /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/luci/collections/luci/Makefile
