@@ -101,7 +101,11 @@ jobs:
         chmod +x $DIY_P1_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
-        
+
+    - name: Install SSRPRO
+      run: |
+        cd openwrt/package && git clone https://github.com/fw876/helloworld
+
     - name: 应用patch & 更新安装 feeds
       run: |
         cp JDCloud-AX1800-Pro/jdc_ax1800-pro.patch openwrt/jdc_ax1800-pro.patch
