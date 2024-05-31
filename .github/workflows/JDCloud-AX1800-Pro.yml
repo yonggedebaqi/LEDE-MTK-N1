@@ -124,7 +124,7 @@ jobs:
         mkdir -p /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/package/libs/libpcre
         cp /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/Makefile /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/package/libs/libpcre
         rm -rf /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/packages/multimedia/ffmpeg
-         rm -rf /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/packages/libs/libx264
+        rm -rf /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/packages/libs/libx264
         cp -R /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/ffmpeg /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/packages/multimedia/
         cp -R /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/libx265 /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/package/libs/
         cp -R /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/libx264 /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/packages/libs
