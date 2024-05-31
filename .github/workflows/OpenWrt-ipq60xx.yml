@@ -116,12 +116,9 @@ jobs:
         git apply jdc_ax1800-pro.patch
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-        
-    - name: 加载config & DIY_P2_SH
+
+    - name: Remove files
       run: |
-        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-        chmod +x $DIY_P2_SH
-        mkdir -p /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/package/libs/libpcre
         cp /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/Makefile /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/package/libs/libpcre
         rm /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/package/base-files/files/etc/profile
         rm /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/package/base-files/files/etc/shadow
@@ -140,6 +137,11 @@ jobs:
         sed -i 's#Bootstrap#Material#g' /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/luci/collections/luci-nginx/Makefile
         sed -i 's#bootstrap#material#g' /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/luci/collections/luci-nginx/Makefile
         sed -i 's/Bootstrap/Material/g' /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/feeds/luci/collections/luci/Makefile
+
+    - name: 加载config & DIY_P2_SH
+      run: |
+        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
+        chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
         
