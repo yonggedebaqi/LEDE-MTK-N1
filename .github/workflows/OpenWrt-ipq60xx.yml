@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 ###############手动修改##############
-name: JDCloud-AX1800-Pro-JiaY-shi
+name: JDCloud-AX1800-Pro-ipq60xx
 
 on:
   repository_dispatch:
