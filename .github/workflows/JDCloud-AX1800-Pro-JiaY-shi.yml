@@ -103,10 +103,6 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
 
-    - name: Install SSRPRO
-      run: |
-        cd openwrt/package && git clone https://github.com/fw876/helloworld
-
     - name: 应用patch & 更新安装 feeds
       run: |
         cp JDCloud-AX1800-Pro/jdc_ax1800-pro.patch openwrt/jdc_ax1800-pro.patch
@@ -117,7 +113,12 @@ jobs:
         git apply jdc_ax1800-pro.patch
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-        
+
+    - name: Install SSRPRO
+      run: |
+        cd openwrt/package
+        git clone https://github.com/fw876/helloworld
+
     - name: 加载config & DIY_P2_SH
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
