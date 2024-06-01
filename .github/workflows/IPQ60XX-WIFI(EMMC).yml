@@ -99,7 +99,7 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
-    - name: copy move file
+    - name: copy move file(复制 移动 文件档案)
       run: |
         mkdir -p /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/package/libs/libpcre
         cp /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/Makefile /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/openwrt/package/libs/libpcre
