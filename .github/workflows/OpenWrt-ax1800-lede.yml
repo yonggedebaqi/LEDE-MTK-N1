@@ -79,14 +79,17 @@ jobs:
         rm openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh
         rm openwrt/package/base-files/files/etc/profile
         rm openwrt/package/base-files/files/etc/shadow
-        rm -rf openwrt/feeds/packages/multimedia/ffmpeg
+        #rm -rf openwrt/feeds/packages/multimedia/ffmpeg
+        rm openwrt/feeds/packages/multimedia/ffmpeg/Makefile
+        rm -rf openwrt/feeds/packages/libs/libx264
 
     - name: copy move file
       run: |
         cp ./mac80211.sh openwrt/package/kernel/mac80211/files/lib/wifi
         cp ./profile openwrt/package/base-files/files/etc
         cp ./shadow openwrt/package/base-files/files/etc
-        cp -R ./ffmpeg openwrt/feeds/packages/multimedia/
+        cp -R ./libx264_new openwrt/feeds/packages/libs/libx264
+        cp ./5.1.4.Makefile openwrt/feeds/packages/multimedia/ffmpeg/Makefile
         sed -i 's/bootstrap/material/g' openwrt/feeds/luci/collections/luci/Makefile
         sed -i 's# (default)##g' openwrt/feeds/luci/themes/luci-theme-bootstrap/Makefile
         sed -i 's#Material Theme#Material Theme (default)#g' openwrt/feeds/luci/themes/luci-theme-material/Makefile
