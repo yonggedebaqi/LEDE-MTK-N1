@@ -114,17 +114,6 @@ jobs:
         cp /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/shadow package/base-files/files/etc
         cp -R /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/libx264_new feeds/packages/libs/libx264
         cp /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/5.1.4.Makefile feeds/packages/multimedia/ffmpeg/Makefile
-        sed -i 's/bootstrap/material/g' feeds/luci/collections/luci/Makefile
-        sed -i 's# (default)##g' feeds/luci/themes/luci-theme-bootstrap/Makefile
-        sed -i 's#Material Theme#Material Theme (default)#g' feeds/luci/themes/luci-theme-material/Makefile
-        sed -i 's#Bootstrap Theme (default)#Bootstrap#g' feeds/luci.index
-        sed -i 's#Material Theme#Material Theme (default)#g' feeds/luci.index
-        sed -i 's#bootstrap#material#g' feeds/luci/modules/luci-base/root/etc/config/luci
-        sed -i 's#+luci-theme-bootstrap#+luci-theme-material#g' feeds/luci.index
-        sed -i 's#Bootstrap#Material#g' feeds/luci/collections/luci-nginx/Makefile
-        sed -i 's#bootstrap#material#g' feeds/luci/collections/luci-nginx/Makefile
-        sed -i 's#bootstrap#material#g' feeds/luci/collections/luci-ssl-nginx/Makefile
-        sed -i 's/Bootstrap/Material/g' feeds/luci/collections/luci/Makefile
         make defconfig
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
