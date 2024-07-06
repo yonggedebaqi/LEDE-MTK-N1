@@ -2,11 +2,11 @@ name: IPQ60XX-ALL
 
 on:
   workflow_dispatch:
-  #schedule:
+  schedule:
     #- cron: 0 19 * * *
 
 env:
-  REPO_URL: https://github.com/King-Of-Knights/openwrt-6.x.git
+  REPO_URL: https://github.com/breeze303/openwrt-6.x.git
   REPO_BRANCH: main
   CONFIG_FILE: configs/ipq60xx-all.config
   DIY_SCRIPT: diy-script.sh
@@ -63,7 +63,7 @@ jobs:
     - name: Clone Source Code(克隆源代码)
       run: |
         df -hT $GITHUB_WORKSPACE
-        git clone $REPO_URL -b $REPO_BRANCH openwrt
+        git clone --depth 1 -b $REPO_BRANCH $REPO_URL openwrt
         cd openwrt
         echo "OPENWRT_PATH=$PWD" >> $GITHUB_ENV
         VERSION_INFO=$(git show -s --date=short --format="作者: %an<br/>时间: %cd<br/>内容: %s<br/>hash: %H")
@@ -96,11 +96,9 @@ jobs:
         ./scripts/feeds install -a
   
     - name: Load Custom Configuration(加载自定义配置)
-      working-directory: /workdir
       run: |
         [ -e files ] && mv files $OPENWRT_PATH/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRT_PATH/.config
-        ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
     - name: Download DL Package(下载DL软件包)
       run: |
