@@ -109,7 +109,7 @@ jobs:
         #rm -rf feeds/packages/multimedia/ffmpeg
         rm feeds/packages/multimedia/ffmpeg/Makefile
         rm -rf feeds/packages/libs/libx264
-        cp /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/mac80211.sh package/kernel/mac80211/files/lib/wifi
+        #cp /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/mac80211.sh package/kernel/mac80211/files/lib/wifi
         cp /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/profile package/base-files/files/etc
         cp /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/shadow package/base-files/files/etc
         cp -R /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/libx264_new feeds/packages/libs/libx264
