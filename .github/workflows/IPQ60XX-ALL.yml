@@ -103,17 +103,17 @@ jobs:
     - name: Download DL Package(下载DL软件包)
       run: |
         cd $OPENWRT_PATH
-        rm package/kernel/mac80211/files/lib/wifi/mac80211.sh
+        #rm package/kernel/mac80211/files/lib/wifi/mac80211.sh
         rm package/base-files/files/etc/profile
         rm package/base-files/files/etc/shadow
         #rm -rf feeds/packages/multimedia/ffmpeg
         rm feeds/packages/multimedia/ffmpeg/Makefile
         rm -rf feeds/packages/libs/libx264
-        cp $OPENWRT_PATH/mac80211.sh package/kernel/mac80211/files/lib/wifi
-        cp $OPENWRT_PATH/profile package/base-files/files/etc
-        cp $OPENWRT_PATH/shadow package/base-files/files/etc
-        cp -R $OPENWRT_PATH/libx264_new feeds/packages/libs/libx264
-        cp $OPENWRT_PATH/5.1.4.Makefile feeds/packages/multimedia/ffmpeg/Makefile
+        cp /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/mac80211.sh package/kernel/mac80211/files/lib/wifi
+        cp /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/profile package/base-files/files/etc
+        cp /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/shadow package/base-files/files/etc
+        cp -R /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/libx264_new feeds/packages/libs/libx264
+        cp /home/runner/work/LEDE-MTK-N1/LEDE-MTK-N1/5.1.4.Makefile feeds/packages/multimedia/ffmpeg/Makefile
         sed -i 's/bootstrap/material/g' feeds/luci/collections/luci/Makefile
         sed -i 's# (default)##g' feeds/luci/themes/luci-theme-bootstrap/Makefile
         sed -i 's#Material Theme#Material Theme (default)#g' feeds/luci/themes/luci-theme-material/Makefile
