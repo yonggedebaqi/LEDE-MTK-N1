@@ -83,9 +83,6 @@ jobs:
         sed -i 's#Material Theme#Material Theme (default)#g' openwrt/feeds/luci.index
         sed -i 's#bootstrap#material#g' openwrt/feeds/luci/modules/luci-base/root/etc/config/luci
         sed -i 's#+luci-theme-bootstrap#+luci-theme-material#g' openwrt/feeds/luci.index
-        sed -i 's#Bootstrap#Material#g' ./openwrt/feeds/luci/collections/luci-nginx/Makefile
-        sed -i 's#bootstrap#material#g' ./openwrt/feeds/luci/collections/luci-nginx/Makefile
-        sed -i 's#bootstrap#material#g' ./openwrt/feeds/luci/collections/luci-ssl-nginx/Makefile
         sed -i 's/Bootstrap/Material/g' ./openwrt/feeds/luci/collections/luci/Makefile
 
     - name: Load custom configuration
