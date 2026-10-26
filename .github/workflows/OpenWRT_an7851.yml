@@ -10,7 +10,7 @@
 # See /LICENSE for more information.
 #
 
-name: OpenWrt ax1800-lede
+name: OpenWRT_an7851
 
 on:
   repository_dispatch:
