@@ -73,7 +73,6 @@ jobs:
 
     - name: copy move file
       run: |
-        cp ./mac80211.sh openwrt/package/kernel/mac80211/files/lib/wifi
         cp ./profile openwrt/package/base-files/files/etc
         cp ./shadow openwrt/package/base-files/files/etc
         cp ./openwrt/configs/an7581.config ./openwrt/.config 
