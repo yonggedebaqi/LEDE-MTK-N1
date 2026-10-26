@@ -20,7 +20,7 @@ env:
   REPO_URL: https://github.com/pbs05/ponwrt
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: ax1800_config
+  CONFIG_FILE: an7581.config
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
   UPLOAD_BIN_DIR: false
@@ -75,7 +75,7 @@ jobs:
       run: |
         cp ./profile openwrt/package/base-files/files/etc
         cp ./shadow openwrt/package/base-files/files/etc
-        cp ./openwrt/configs/an7581.config ./openwrt/.config 
+        cp ./an7581.config ./openwrt/.config 
         sed -i 's/bootstrap/material/g' openwrt/feeds/luci/collections/luci/Makefile
         sed -i 's# (default)##g' openwrt/feeds/luci/themes/luci-theme-bootstrap/Makefile
         sed -i 's#Material Theme#Material Theme (default)#g' openwrt/feeds/luci/themes/luci-theme-material/Makefile
